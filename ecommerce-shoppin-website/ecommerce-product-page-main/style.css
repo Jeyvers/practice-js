@@ -216,4 +216,10 @@ nav {
   .cart-btn {
     margin-right: var(--mb-1);
   }
+
+  /* Showcase */
+  .showcase {
+    display: flex;
+    flex-direction: column;
+  }
 }

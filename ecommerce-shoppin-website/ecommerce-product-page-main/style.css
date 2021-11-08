@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;400;700&display=swap");
+
+:root {
+  --header-height: 3rem;
+  --main-transition: all 0.4s ease-in-out;
+
+  /* Colors */
+  --primary-color: hsl(26, 100%, 55%);
+  --alternate-primary-color: hsl(25, 100%, 94%);
+  --title-color: hsl(220, 13%, 13%);
+  --first-color: hsl(219, 9%, 45%);
+  --second-color: hsl(220, 14%, 75%);
+  --third-color: hsl(223, 64%, 98%);
+  --body-color: hsl(0, 0%, 100%);
+  --shadow-color: hsl(0, 0%, 0%);
+
+  /* FONT AND TYPOGRAPHY */
+  --body-font: "Kumbh Sans", sans-serif;
+
+  /* .5rem =8px, 1rem =16px, 1.5rem =24px ... */
+  --big-font-size: 2rem;
+  --normal-font-size: 1rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /* FONT WEIGHT */
+  --font-medium: 400;
+  --font-semi-bold: 700;
+
+  /* Margins Bottom */
+  /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /* Z INDEX */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 0 var(--header-height) 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  line-height: var(--normal-font-size);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Utilities */
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Reusable classes */
+nav {
+  height: 120px;
+}
+
+.cart-btn {
+  position: relative;
+  cursor: pointer;
+}
+.cart-items {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--primary-color);
+  padding: 0 5px;
+  border-radius: 30%;
+  color: var(--body-color);
+}
+
+@media screen and (min-width: 375px) {
+  /* Navigation section */
+  nav {
+    padding: var(--normal-font-size);
+  }
+
+  nav.flex {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav div {
+    display: flex;
+  }
+
+  .list-items-overlay {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    transition: var(--main-transition);
+  }
+
+  .list-items {
+    background-color: var(--body-color);
+    position: fixed;
+    width: 70%;
+    height: 100%;
+    z-index: 10;
+    left: -600px;
+    top: 0;
+    overflow: hidden;
+    transition: var(--main-transition);
+  }
+
+  .show-list-items {
+    transition: var(--main-transition);
+    transform: translateX(600px);
+  }
+
+  .transparentBcg {
+    visibility: visible;
+  }
+
+  .close-btn {
+    position: absolute;
+    padding: 20px;
+    cursor: pointer;
+    font-size: var(--h2-font-size);
+    color: var(--first-color);
+  }
+
+  .close-btn:hover {
+    color: var(--second-color);
+  }
+
+  .list-items ul {
+    margin-top: 5rem;
+    padding: var(--mb-0-25);
+  }
+
+  .list-items li {
+    margin: var(--mb-2);
+  }
+
+  .list-items a {
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+    font-size: var(--h2-font-size);
+  }
+
+  .logo {
+    font-size: var(--big-font-size);
+    margin-left: var(--mb-1);
+    letter-spacing: -1px;
+  }
+
+  #profile {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-icon {
+    font-size: var(--h1-font-size);
+  }
+
+  .cart-btn {
+    margin-right: var(--mb-1);
+  }
+}

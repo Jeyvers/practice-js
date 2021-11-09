@@ -2,7 +2,7 @@
 const bars = document.querySelector('.fa-bars');
 const listItemsOverlay = document.querySelector('.list-items-overlay');
 const listItems = document.querySelector('.list-items');
-const closeBtn = document.querySelector('.close-btn');
+const closeBtn = document.getElementById('close-btn');
 const imgs = document.querySelectorAll('.showcase-img');
 const next = document.querySelector('#next');
 const prev = document.querySelector('#prev');
@@ -22,7 +22,7 @@ function displayListItems()  {
 }
 
 function removeListItems(e) {
-    if(!(e.target.classList.contains('list-items') && (e.target.classList.contains('list-items-overlay')))) {
+    if(e.target === listItemsOverlay || e.target === closeBtn) {
         listItemsOverlay.classList.remove('transparentBcg');
         listItems.classList.remove('show-list-items');
     }
@@ -48,7 +48,7 @@ const nextImg = () => {
     setTimeout(() => current.classList.remove('current'));
 };
 
-const prevSlide = () => {
+const prevImg = () => {
     // Get current class
     const current = document.querySelector('.current');
     // Remove current class
@@ -68,7 +68,7 @@ const prevSlide = () => {
 // Event listeners
 bars.addEventListener('click', displayListItems);
 closeBtn.addEventListener('click', removeListItems);
-listItemsOverlay.addEventListener('click', removeListItems)
+document.addEventListener('click', removeListItems);
 
 
 // Button events 
@@ -94,6 +94,9 @@ if(auto){
     imgInterval = setInterval(nextImg, intervalTime);
 }
 viewCart.addEventListener('click', showCart);
-cartSection.addEventListener('click', () => {
-    cartSection.classList.remove('transparentBcg')
+document.addEventListener('click', e => {
+    if(e.target === cartSection) {
+        console.log('hello')
+        cartSection.classList.remove('transparentBcg')
+    }
 })

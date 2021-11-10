@@ -3,9 +3,7 @@ const bars = document.querySelector('.fa-bars');
 const listItemsOverlay = document.querySelector('.list-items-overlay');
 const listItems = document.querySelector('.list-items');
 const closeBtn = document.getElementById('close-btn');
-const imgs = document.querySelectorAll('.showcase-img');
-const next = document.querySelector('#next');
-const prev = document.querySelector('#prev');
+const productsDOM = document.querySelector('.products-center');
 const intervalTime = 5000;
 const viewCart = document.querySelector('#view-cart');
 const cartOverlay = document.querySelector('.cart-overlay');
@@ -19,11 +17,91 @@ let cart = [];
 // Classes and functions
 // products class 
 class Products {
-
+    async getProducts() {
+        try { 
+            let result = await fetch('products.json')
+            let data = await result.json();
+            let products = data.collections;
+            // products = products.map(collection => {
+            //     const {id, imgsrc, imgalt1, imgalt3, imgthubnail, gender, brand, title, description, price, discount} = collection;
+            //     return {id, imgsrc, imgalt1, imgalt3, imgthubnail, gender, brand, title, description, price, discount} 
+            // })
+            return products
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 class UI {
+    
+    displayProducts(products) {
+        let result = '';
+        products.forEach(product => {
+            result += `
+            <article>
+            <div id="img-container">
+            <!-- Single collection -->
+           
+            <div class="img-icons">
+            <span class="img-icon" id="next">
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </span>
+            <span class="img-icon" id="prev">
+              <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </span>
+            </div>
+            <div class="image-area">
+            <div class="imgs">
+                <img src="${product.imgsrc}" class="current showcase-img">
+                <img src="${product.imgalt1}" class="showcase-img">
+                <img src="${product.imgalt2}" class="showcase-img">
+                <img src="${product.imgalt3}" class="showcase-img">
+              
+            </div>
+              </div>
+          
+              <div class="image-information-area">
+                <h4>${product.brand}</h4>
+                <h1>${product.title}</h1>
+                <p>
+                ${product.description}</p>
+          
+                  <h1 class="discount-amount">
+                    $125.00
+                    <span class="discount-percentage">${product.discount}</span>
+                    <span class="amount">${product.price}</span>
+                  </h1>
+          
+                  <div>
+                  <div class="cart-increase">
+                    <span class="decrement">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                    </span>
+                    <span class="num-available">
+                      0
+                    </span>
+                    <span class="increment">
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                    </span>
+                    </div>
+                    <button class="add-cart-btn" data-id="${product.id}">
+                      <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
+                    </button>
+                  </div>
+          
+              </div>
+            </div>
+            </article>
+            `;
+        });
+        productsDOM.innerHTML = result;
+    }
+
     listenersDOM() {      
+        const imgs = document.querySelectorAll('.showcase-img');
+        const next = document.querySelector('#next');
+        const prev = document.querySelector('#prev');
         // Event listeners
         bars.addEventListener('click', this.displayListItems);
         closeBtn.addEventListener('click', this.removeListItems);
@@ -56,12 +134,12 @@ class UI {
         viewCart.addEventListener('click',this.showCart);
         document.addEventListener('click', e => {
             if(e.target === cartOverlay) {
-                console.log('hello')
                 cartOverlay.classList.remove('transparentBcg')
             }
         })
 
     }
+
 
     displayListItems()  {
         listItemsOverlay.classList.add('transparentBcg');
@@ -77,10 +155,10 @@ class UI {
 
     showCart() {
         cartOverlay.classList.add('transparentBcg');
-      } 
+    } 
 
-      
      nextImg (){
+        const imgs = document.querySelectorAll('.showcase-img');
         // Get current class
         const current = document.querySelector('.current');
         // Remove current class
@@ -94,9 +172,10 @@ class UI {
             imgs[0].classList.add('current');
         }
         setTimeout(() => current.classList.remove('current'));
-};
+    };
 
     prevImg ()  {
+        const imgs = document.querySelectorAll('.showcase-img');
         // Get current class
         const current = document.querySelector('.current');
         // Remove current class
@@ -114,10 +193,23 @@ class UI {
 
 }
 
+class Storage {
+    static saveProducts(products) {
+        localStorage.setItem("products", JSON.stringify(products))
+    } 
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const ui = new UI();
     const products = new Products();
-    ui.listenersDOM();
+    // ui.listenersDOM();
 
+    // get all products 
+    products.getProducts().then(products => {
+        ui.displayProducts(products);
+        Storage.saveProducts(products);
+    }).then(() => {
+        ui.listenersDOM();
+    }) 
 })

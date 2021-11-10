@@ -10,7 +10,7 @@ const auto = true;
 const intervalTime = 5000;
 let slideInterval;
 const viewCart = document.querySelector('#view-cart');
-const cartSection = document.querySelector('.cart-section');
+const cartSection = document.querySelector('.cart-overlay');
 
 
 

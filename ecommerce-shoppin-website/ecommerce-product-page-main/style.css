@@ -124,6 +124,16 @@ nav {
   color: var(--body-color);
 }
 
+/* .products-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
+} */
+
 .image-information-area {
   display: flex;
   padding: 10px 20px;
@@ -181,9 +191,13 @@ nav {
   color: var(--body-color);
   border: none;
   border-radius: var(--mb-0-75);
-  width: 100%;
+  margin-top: var(--mb-0-5);
   font-size: var(--h3-font-size);
   text-align: center;
+}
+
+.add-cart-btn:hover {
+  opacity: 0.8;
 }
 
 .add-cart-btn .fa {
@@ -208,6 +222,8 @@ nav {
   background-color: var(--body-color);
   overflow: scroll;
   z-index: 3;
+  max-height: 50%;
+  min-height: 220px;
   border-radius: var(--mb-0-5);
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
 }
@@ -220,8 +236,6 @@ nav {
 }
 
 .cart-products {
-  min-height: 220px;
-  overflow: auto;
   align-items: center;
   justify-content: center;
 }
@@ -230,18 +244,36 @@ nav {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
   display: flex;
   flex-direction: row;
   margin: 15px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-info {
+  margin: 0 10px;
+  line-height: var(--mb-1-5);
+  color: var(--first-color);
 }
 
 .content img {
   width: 20%;
   height: 20%;
   border-radius: var(--mb-0-5);
+}
+
+.total-amount {
+  font-weight: bolder;
+}
+
+.trash-btn {
+  color: var(--second-color);
 }
 
 @media screen and (min-width: 375px) {
@@ -369,13 +401,19 @@ nav {
     height: 320px;
   }
 
+  .img-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .img-icons {
+    position: fixed;
+  }
+
   .img-icon {
     background-color: var(--body-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    width: 45px;
+    height: 145px;
+    width: 145px;
     border-radius: 50%;
     color: var(--first-color);
     font-size: var(--h3-font-size);
@@ -388,14 +426,10 @@ nav {
   }
 
   .img-icon#next {
-    position: absolute;
-    top: 30%;
     right: 20px;
   }
 
   .img-icon#prev {
-    position: absolute;
-    top: 30%;
     left: 10px;
   }
 
@@ -404,7 +438,12 @@ nav {
   }
 
   .cart-area {
-    margin: 0 10px;
+    margin: 0 3%;
     width: 92vw;
+    overflow: scroll;
+  }
+
+  .add-cart-btn {
+    width: 100%;
   }
 }

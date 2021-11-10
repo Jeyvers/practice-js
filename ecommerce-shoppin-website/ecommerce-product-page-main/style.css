@@ -154,7 +154,7 @@ nav {
   justify-self: center;
 }
 
-.discount-amount {
+.amount {
   margin-left: 75px;
   font-size: var(--h3-font-size);
   color: var(--second-color);
@@ -191,7 +191,7 @@ nav {
   margin-right: 1rem;
 }
 
-.cart-section {
+.cart-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -221,9 +221,27 @@ nav {
 
 .cart-products {
   min-height: 220px;
-  display: flex;
+  overflow: auto;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+}
+
+.content img {
+  width: 20%;
+  height: 20%;
+  border-radius: var(--mb-0-5);
 }
 
 @media screen and (min-width: 375px) {

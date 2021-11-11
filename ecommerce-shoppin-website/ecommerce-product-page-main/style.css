@@ -401,19 +401,27 @@ nav {
     height: 320px;
   }
 
-  .img-container {
-    position: relative;
-    overflow: hidden;
+  article {
+    margin-bottom: 20px;
+    border-bottom: 5px solid var(--second-color);
+    border-radius: 20px;
+    /* position: relative;
+    overflow: hidden; */
   }
 
   .img-icons {
-    position: fixed;
+    position: relative;
+    top: 170px;
   }
 
   .img-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
     background-color: var(--body-color);
-    height: 145px;
-    width: 145px;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
     color: var(--first-color);
     font-size: var(--h3-font-size);
@@ -431,6 +439,10 @@ nav {
 
   .img-icon#prev {
     left: 10px;
+  }
+
+  .image-area {
+    position: relative;
   }
 
   .image-information-area {

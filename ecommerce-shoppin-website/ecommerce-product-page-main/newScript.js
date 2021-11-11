@@ -8,7 +8,6 @@ const intervalTime = 5000;
 const viewCart = document.querySelector('#view-cart');
 const cartOverlay = document.querySelector('.cart-overlay');
 const cartContent = document.querySelector('.cart-products');
-
 const auto = true;
 let imgInterval;
 // cart 
@@ -99,9 +98,9 @@ class UI {
     }
 
     listenersDOM() {      
-        const imgs = document.querySelectorAll('.showcase-img');
-        const next = document.querySelector('#next');
-        const prev = document.querySelector('#prev');
+        const nexts = [...document.querySelectorAll('#next')];
+        const prevs = [...document.querySelectorAll('#prev')];
+        console.log(nexts, prevs)
         // Event listeners
         bars.addEventListener('click', this.displayListItems);
         closeBtn.addEventListener('click', this.removeListItems);
@@ -109,21 +108,25 @@ class UI {
 
 
         // Button events 
-        next.addEventListener('click', e => {
-            this.nextImg();
-            if(auto){
-                clearInterval(imgInterval);
-                imgInterval = setInterval(this.nextImg, intervalTime);
-            }
+        nexts.forEach(next => {
+            next.addEventListener('click', e => {
+                this.nextImg();
+                if(auto){
+                    clearInterval(imgInterval);
+                    imgInterval = setInterval(this.nextImg, intervalTime);
+                }
+            });
         });
 
-        prev.addEventListener('click', e => {
-            this.prevImg();
-            if(auto){
-                clearInterval(imgInterval);
-                imgInterval = setInterval(this.nextImg, intervalTime);
-            }
-        });
+        prevs.forEach(prev => {
+            prev.addEventListener('click', e => {
+                this.prevImg();
+                if(auto){
+                    clearInterval(imgInterval);
+                    imgInterval = setInterval(this.nextImg, intervalTime);
+                }
+            });
+        })
 
         // Auto Img
         if(auto){
@@ -140,6 +143,19 @@ class UI {
 
     }
 
+    getCartButtons() {
+        const buttons = [...document.querySelectorAll(".add-cart-btn")]
+        buttons.forEach(button => {
+            let id = button.dataset.id;
+            let inCart = cart.find(collection => collection.id);
+            if(inCart) {
+                button.innerText = 'In Cart';
+                button.disabled = true; 
+            } else {
+                button.addEventListener
+            }
+        })
+    }
 
     displayListItems()  {
         listItemsOverlay.classList.add('transparentBcg');
@@ -159,6 +175,7 @@ class UI {
 
      nextImg (){
         const imgs = document.querySelectorAll('.showcase-img');
+      
         // Get current class
         const current = document.querySelector('.current');
         // Remove current class
@@ -210,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ui.displayProducts(products);
         Storage.saveProducts(products);
     }).then(() => {
+        ui.getCartButtons();
         ui.listenersDOM();
     }) 
 })

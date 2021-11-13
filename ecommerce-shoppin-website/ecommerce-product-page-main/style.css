@@ -207,6 +207,20 @@ nav {
   margin-right: 1rem;
 }
 
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear-cart {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .cart-overlay {
   position: fixed;
   top: 0;
@@ -240,6 +254,34 @@ nav {
 .cart-products {
   align-items: center;
   justify-content: center;
+}
+
+.cart-message {
+  padding: 30px;
+  margin: 0 auto;
+  position: fixed;
+  color: var(--body-color);
+  background-color: var(--first-color);
+}
+
+/* #cart-empty {
+  display: none;
+} */
+
+.cart-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-btn {
+  padding: 20px 100px;
+  margin: 15px 10px;
+  border: none;
+  color: var(--body-color);
+  background-color: var(--primary-color);
+  border-radius: 10px;
 }
 
 .container {

@@ -9,6 +9,11 @@
     crossorigin="anonymous"
   ></script>
   <link rel="stylesheet" href="style.css">
+  <!-- Link Swiper's CSS -->
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper/swiper-bundle.min.css"
+/>
     <title>Buy your quality shoe wears | Jeyvers</title>
 </head>
 <body>
@@ -49,21 +54,85 @@
   </nav>
   <section class="showcase"> 
     <div class="products-center">
-    <!-- <div id="img-container">
+    <div id="img-container">
+    <div class="image-area">
+  <div class="imgs">
+         <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">    <img src="${product.imgsrc}" class="showcase-img">
+        </div>
+        <div class="swiper-slide">    <img src="${product.imgalt1}" class="showcase-img">
+        </div>
+        <div class="swiper-slide">    <img src="${product.imgalt2}" class="showcase-img">
+        </div>
+        <div class="swiper-slide">    <img src="${product.imgalt3}" class="showcase-img">
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    
+  </div>
+    </div>
 
+    <div class="image-information-area">
+      <h4>${product.brand}</h4>
+      <h1>${product.title}</h1>
+      <p>
+        ${product.description}</p>
+
+        <h1 class="discount-amount">
+          $125.00
+          <span class="discount-percentage">${product.discount}</span>
+          <span class="amount">${product.price}</span>
+        </h1>
+
+        <div>
+        <div class="cart-increase">
+          <span class="decrement">
+          <i class="fa fa-minus" aria-hidden="true"></i>
+          </span>
+          <span class="num-available">
+            0
+          </span>
+          <span class="increment">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </span>
+          </div>
+          <button class="add-cart-btn" data-id="${product.id}">
+            <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
+          </button>
+        </div>
+
+    </div>
+  </div>
+    <div id="img-container">
+<!-- 
   <span class="img-icon" id="next">
     <i class="fa fa-angle-right" aria-hidden="true"></i>
   </span>
   <span class="img-icon" id="prev">
     <i class="fa fa-angle-left" aria-hidden="true"></i>
-  </span>
+  </span> -->
 
     <div class="image-area">
   <div class="imgs">
-      <img src="images/image-product-1.jpg" class="current showcase-img">
-      <img src="images/image-product-2.jpg" class="showcase-img">
-      <img src="images/image-product-3.jpg" class="showcase-img">
-      <img src="images/image-product-4.jpg" class="showcase-img">
+         <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">    <img src="images/image-product-1.jpg" class="current showcase-img">
+        </div>
+        <div class="swiper-slide">    <img src="images/image-product-2.jpg" class="showcase-img">
+        </div>
+        <div class="swiper-slide">    <img src="images/image-product-3.jpg" class="showcase-img">
+        </div>
+        <div class="swiper-slide">    <img src="images/image-product-4.jpg" class="showcase-img">
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
     
   </div>
     </div>
@@ -99,7 +168,7 @@
         </div>
 
     </div>
-  </div> -->
+  </div>
 </div>
   </section> 
 
@@ -120,17 +189,28 @@
           <i class="fa fa-trash" aria-hidden="true"></i> 
         </span>
       </div>
-        <!-- <div id="cart-empty">Your cart is empty</div> -->
-        <!-- <button class="add-cart-btn" id="checkout-btn">Checkout</button> -->
+        <div id="cart-empty">Your cart is empty</div> 
+       <button class="add-cart-btn" id="checkout-btn">Checkout</button>
     </div>
-      <!-- <div id="cart-empty">Your cart is empty</div> -->
+      <div id="cart-empty">Your cart is empty</div>
     </div>
   </div>
  </div>
 </div>
 
-
 <!-- JS -->
-<script src="newScript.js"></script>
+<!-- <script src="newScript.js"></script> -->
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
 </body>
 </html>

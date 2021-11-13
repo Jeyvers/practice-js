@@ -49,7 +49,7 @@ class UI {
             <span class="img-icon" id="prev">
               <i class="fa fa-angle-left" aria-hidden="true"></i>
             </span>
-            </div>
+            </div
             <div class="image-area">
             <div class="imgs">
                 <img src="${product.imgsrc}" class="current showcase-img">
@@ -69,7 +69,7 @@ class UI {
                   <h1 class="discount-amount">
                     $125.00
                     <span class="discount-percentage">${product.discount}</span>
-                    <span class="amount">${product.price}</span>
+                    <span class="amount">${product.price} + '$'</span>
                   </h1>
           
                   <div>
@@ -98,41 +98,41 @@ class UI {
     }
 
     listenersDOM() {      
-        const nexts = [...document.querySelectorAll('#next')];
-        const prevs = [...document.querySelectorAll('#prev')];
-        console.log(nexts, prevs)
-        // Event listeners
+        // const nexts = [...document.querySelectorAll('#next')];
+        // const prevs = [...document.querySelectorAll('#prev')];
+        // console.log(nexts, prevs)
+        // // Event listeners
         bars.addEventListener('click', this.displayListItems);
         closeBtn.addEventListener('click', this.removeListItems);
         document.addEventListener('click', this.removeListItems);
 
 
         // Button events 
-        nexts.forEach(next => {
-            next.addEventListener('click', e => {
-                this.nextImg();
-                if(auto){
-                    clearInterval(imgInterval);
-                    imgInterval = setInterval(this.nextImg, intervalTime);
-                }
-            });
-        });
+        // nexts.forEach(next => {
+        //     next.addEventListener('click', e => {
+        //         this.nextImg();
+        //         if(auto){
+        //             clearInterval(imgInterval);
+        //             imgInterval = setInterval(this.nextImg, intervalTime);
+        //         }
+        //     });
+        // });
 
-        prevs.forEach(prev => {
-            prev.addEventListener('click', e => {
-                this.prevImg();
-                if(auto){
-                    clearInterval(imgInterval);
-                    imgInterval = setInterval(this.nextImg, intervalTime);
-                }
-            });
-        })
+        // prevs.forEach(prev => {
+        //     prev.addEventListener('click', e => {
+        //         this.prevImg();
+        //         if(auto){
+        //             clearInterval(imgInterval);
+        //             imgInterval = setInterval(this.nextImg, intervalTime);
+        //         }
+        //     });
+        // })
 
-        // Auto Img
-        if(auto){
-            // Run next Img at intervalTime tiem
-            imgInterval = setInterval(this.nextImg, intervalTime);
-        }
+        // // Auto Img
+        // if(auto){
+        //     // Run next Img at intervalTime tiem
+        //     imgInterval = setInterval(this.nextImg, intervalTime);
+        // }
 
         viewCart.addEventListener('click',this.showCart);
         document.addEventListener('click', e => {
@@ -173,40 +173,40 @@ class UI {
         cartOverlay.classList.add('transparentBcg');
     } 
 
-     nextImg (){
-        const imgs = document.querySelectorAll('.showcase-img');
+    //  nextImg (){
+    //     const imgs = document.querySelectorAll('.showcase-img');
       
-        // Get current class
-        const current = document.querySelector('.current');
-        // Remove current class
-        current.classList.remove('current');
-        // Check for next slide 
-        if(current.nextElementSibling){
-            // Add current to next sibling
-            current.nextElementSibling.classList.add('current');
-        } else {
-            // Add current to start
-            imgs[0].classList.add('current');
-        }
-        setTimeout(() => current.classList.remove('current'));
-    };
+    //     // Get current class
+    //     const current = document.querySelector('.current');
+    //     // Remove current class
+    //     current.classList.remove('current');
+    //     // Check for next slide 
+    //     if(current.nextElementSibling){
+    //         // Add current to next sibling
+    //         current.nextElementSibling.classList.add('current');
+    //     } else {
+    //         // Add current to start
+    //         imgs[0].classList.add('current');
+    //     }
+    //     setTimeout(() => current.classList.remove('current'));
+    // };
 
-    prevImg ()  {
-        const imgs = document.querySelectorAll('.showcase-img');
-        // Get current class
-        const current = document.querySelector('.current');
-        // Remove current class
-        current.classList.remove('current');
-        // Check for next slide 
-        if(current.previousElementSibling){
-            // Add current to next sibling
-            current.previousElementSibling.classList.add('current');
-        } else {
-            // Add current to last
-            imgs[imgs.length - 1].classList.add('current');
-        }
-        setTimeout(() => current.classList.remove('current'));
-};
+    // prevImg ()  {
+    //     const imgs = document.querySelectorAll('.showcase-img');
+    //     // Get current class
+    //     const current = document.querySelector('.current');
+    //     // Remove current class
+    //     current.classList.remove('current');
+    //     // Check for next slide 
+    //     if(current.previousElementSibling){
+    //         // Add current to next sibling
+    //         current.previousElementSibling.classList.add('current');
+    //     } else {
+    //         // Add current to last
+    //         imgs[imgs.length - 1].classList.add('current');
+    //     }
+    //     setTimeout(() => current.classList.remove('current'));
+    // };
 
 }
 

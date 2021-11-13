@@ -13,7 +13,8 @@
   --third-color: hsl(223, 64%, 98%);
   --body-color: hsl(0, 0%, 100%);
   --shadow-color: hsl(0, 0%, 0%);
-
+  --swiper-theme-color: var(--first-color) !important;
+  --swiper-navigation-size: 20px !important;
   /* FONT AND TYPOGRAPHY */
   --body-font: "Kumbh Sans", sans-serif;
 
@@ -406,30 +407,18 @@ nav {
     height: 100%;
     object-fit: cover;
   }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: var(--body-color);
+    padding: 20px;
+    border-radius: 50%;
+  }
   /* End of swiper classes */
 
   .showcase {
     display: flex;
     flex-direction: column;
-  }
-  /* 
-  .showcase-img {
-    display: none;
-  }
-
-  .showcase-img.current {
-    display: block;
-    object-fit: cover;
-    width: 100%;
-    height: 310px;
-    opacity: 0.7;
-    animation: fadeIn 1s ease-in 0.2s forwards;
-  } */
-  /* Fad in animation */
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
   }
 
   .imgs {
@@ -441,41 +430,7 @@ nav {
     margin-bottom: 20px;
     border-bottom: 5px solid var(--second-color);
     border-radius: 20px;
-    /* position: relative;
-    overflow: hidden; */
   }
-  /* 
-  .img-icons {
-    position: relative;
-    top: 170px;
-  }
-
-  .img-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: var(--body-color);
-    height: 45px;
-    width: 45px;
-    border-radius: 50%;
-    color: var(--first-color);
-    font-size: var(--h3-font-size);
-    z-index: 1;
-  }
-
-  .img-icon:hover {
-    color: var(--primary-color);
-    opacity: 0.8;
-  }
-
-  .img-icon#next {
-    right: 20px;
-  }
-
-  .img-icon#prev {
-    left: 10px;
-  } */
 
   /* .image-area {
     position: relative;

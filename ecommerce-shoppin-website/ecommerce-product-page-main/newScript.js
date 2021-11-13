@@ -12,6 +12,8 @@ const auto = true;
 let imgInterval;
 // cart 
 let cart = [];
+// buttons
+let buttonsDOM = [];
 
 // Classes and functions
 // products class 
@@ -119,16 +121,29 @@ class UI {
     }
 
     getCartButtons() {
-        const buttons = [...document.querySelectorAll(".add-cart-btn")]
+        const buttons = [...document.querySelectorAll(".add-cart-btn")];
+        buttonsDOM = buttons;
         buttons.forEach(button => {
             let id = button.dataset.id;
-            let inCart = cart.find(collection => collection.id);
+            let inCart = cart.find(collection => collection.id === id);
             if(inCart) {
                 button.innerText = 'In Cart';
                 button.disabled = true; 
-            } else {
-                button.addEventListener
-            }
+            } 
+                button.addEventListener('click', (e) => {
+                  e.target.innerText = 'In Cart';
+                  e.target.disabled = true; 
+                  // Get products from products
+                  let cartItem = Storage.getProduct(id);
+                  console.log(cartItem);
+                  // Add product to the cart
+                  // Cart in local storage
+                  // Set cart values to local storage
+                  // Add cart item 
+                  // Display cart item 
+                  // Show cart item 
+                })
+            
         })
     }
 
@@ -151,9 +166,15 @@ class UI {
 }
 
 class Storage {
-    static saveProducts(products) {
-        localStorage.setItem("products", JSON.stringify(products))
-    } 
+  static saveProducts(products) {
+    localStorage.setItem("products", JSON.stringify(products))
+  } 
+
+  static getProduct(id) {
+    let products = JSON.parse(localStorage.getItem('products'));
+    return products.find(product => product.id === id);
+  }
+
 }
 
 

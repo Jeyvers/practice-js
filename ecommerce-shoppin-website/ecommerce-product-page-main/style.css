@@ -264,9 +264,9 @@ nav {
   background-color: var(--first-color);
 }
 
-/* #cart-empty {
-  display: none;
-} */
+.cart-footer {
+  visibility: hidden;
+}
 
 .cart-footer {
   display: flex;

@@ -12,6 +12,7 @@ const cartItems = document.querySelector('.cart-items');
 const cartContainer = document.querySelector('.container');
 const clearCartBtn = document.querySelector('.clear-cart');
 const cartEmpty = document.querySelector('#cart-empty');
+const cartFooter = document.querySelector('.cart-footer');
 
 // cart 
 let cart = [];
@@ -91,7 +92,7 @@ class UI {
                   <i class="fa fa-minus" aria-hidden="true" data-id=${product.id}></i>
                   </span>
                   <span class="num-available">
-                   ${product.amount}
+                   ${product.itemAmount}
                   </span>
                   <span class="increment">
                     <i class="fa fa-plus" aria-hidden="true" data-id=${product.id}></i>
@@ -140,6 +141,8 @@ class UI {
                   e.target.disabled = true; 
                   // Get products from products
                   let cartItem = {...Storage.getProduct(id), amount: 1};
+                  const you = document.querySelector('num-available');
+                  console.log(you)
                   // Add product to the cart
                   cart = [...cart, cartItem];
                   // Cart in local storage
@@ -180,12 +183,12 @@ class UI {
         <span class="discount-amount">${collection.promoPrice}</span> x <span class="num-available">${collection.amount}</span> <span class="total-amount"> &nbsp;  ${collection.itemTempTotal}</span>
       </div>
       <span class="trash-btn" data-id=${collection.id}>
-        <i class="fa fa-trash" aria-hidden="true"></i> 
+        <i class="fa fa-trash remove-item" aria-hidden="true" data-id=${collection.id}></i> 
       </span>
       `;
-      
       cartContainer.appendChild(div);
       cartEmpty.style.display = 'none';
+      // cartFooter.style.visibility = 'visible';
       setTimeout(this.showCartMessage(), 2000);
     }
 
@@ -209,7 +212,17 @@ class UI {
       // Clear cart button
       clearCartBtn.addEventListener('click',() => {
         this.clearCart();
-      }) 
+      });
+      // cart functionality 
+      cartContainer.addEventListener('click', e => {
+        if(e.target.classList.contains('remove-item')) {
+          let removeItem = e.target;
+          let id = removeItem.dataset.id;
+          this.removeItems(id);
+          cartContainer.removeChild(removeItem.parentElement.parentElement)  
+        }
+      }); 
+
     }
 
     clearCart() {
@@ -221,7 +234,8 @@ class UI {
         while(cartContainer.children.length > 0) {
           cartContainer.removeChild(cartContainer.children[0]);
         }
-        cartEmpty.innerHTML = 'Your cart is empty'
+        cartEmpty.innerHTML = 'Your cart is empty';
+        // cartFooter.style.visibility = 'hidden';
         cartEmpty.style.display = 'block';
       }
 

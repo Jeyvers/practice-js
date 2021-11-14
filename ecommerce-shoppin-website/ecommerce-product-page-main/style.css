@@ -180,15 +180,16 @@ nav {
 
 .cart-increase .fa {
   color: var(--primary-color);
+  padding: 10px;
 }
 
 .cart-increase .num-available {
-  margin: 0 40%;
+  margin: 0 100px;
   font-weight: bolder;
 }
 
 .add-cart-btn {
-  padding: 25px;
+  padding: 30px;
   background: var(--primary-color);
   color: var(--body-color);
   border: none;

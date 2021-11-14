@@ -88,15 +88,15 @@ class UI {
         
                 <div>
                 <div class="cart-increase">
-                  <span class="decrement">
+                  
                   <i class="fa fa-minus" aria-hidden="true" data-id=${product.id}></i>
-                  </span>
-                  <span class="num-available">
+                  
+                  <span class="num-available" data-id=${product.id}>
                    ${product.itemAmount}
                   </span>
-                  <span class="increment">
-                    <i class="fa fa-plus" aria-hidden="true" data-id=${product.id}></i>
-                  </span>
+                  
+                    <i class="fa fa-plus increment" aria-hidden="true" data-id=${product.id}></i>
+                  
                   </div>
                   <button class="add-cart-btn" data-id="${product.id}">
                     <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
@@ -140,9 +140,8 @@ class UI {
                   e.target.innerText = 'In Cart';
                   e.target.disabled = true; 
                   // Get products from products
-                  let cartItem = {...Storage.getProduct(id), amount: 1};
-                  const you = document.querySelector('num-available');
-                  console.log(you)
+                  let cartItem = {...Storage.getProduct(id)};
+                  cartItem.itemAmount = 1;
                   // Add product to the cart
                   cart = [...cart, cartItem];
                   // Cart in local storage
@@ -163,8 +162,8 @@ class UI {
       let tempTotal = 0;
       let itemsTotal = 0;
       cart.map(collection => {
-        tempTotal += collection.promoPrice * collection.amount;
-        itemsTotal += collection.amount;
+        tempTotal += collection.promoPrice * collection.itemAmount;
+        itemsTotal += collection.itemAmount;
       });
       cartTotal.innerText = parseFloat(tempTotal.toFixed(2))
       cartItems.innerText = itemsTotal;
@@ -173,14 +172,14 @@ class UI {
     }
 
     addCartItem(collection) {
-      collection.itemTempTotal = collection.amount * collection.promoPrice; 
+      collection.itemTempTotal = collection.itemAmount * collection.promoPrice; 
       const div = document.createElement('div');
       div.classList.add('content'); 
       div.innerHTML = `
       <img src="${collection.imgthumbnail}" alt="">
       <div class="content-info">
         ${collection.type}
-        <span class="discount-amount">${collection.promoPrice}</span> x <span class="num-available">${collection.amount}</span> <span class="total-amount"> &nbsp;  ${collection.itemTempTotal}</span>
+        <span class="discount-amount">${collection.promoPrice}</span> x <span class="num-available" data-id=${collection.id}>${collection.itemAmount}</span> <span class="total-amount"> &nbsp;  ${collection.itemTempTotal}</span>
       </div>
       <span class="trash-btn" data-id=${collection.id}>
         <i class="fa fa-trash remove-item" aria-hidden="true" data-id=${collection.id}></i> 
@@ -223,6 +222,37 @@ class UI {
         }
       }); 
 
+    }
+
+    DOMCartLogic() {
+      productsDOM.addEventListener('click', e => {
+        let id = e.target.dataset.id;
+        let inCart = cart.find(collection => collection.id === id);
+        let cartItem = {...Storage.getProduct(id)};
+        if (e.target.classList.contains('increment')) {
+          if(inCart) {
+            inCart.itemAmount++;
+          //  let numAvailable = document.querySelector('.num-available');
+          //  console.log(numAvailable)
+          } else {
+            this.getCartButtons();
+            cart = [...cart, cartItem];
+            this.addCartItem(cartItem);
+            Storage.saveCart(cart);
+            // Set cart values to local storage
+            this.setCartValues(cart);
+            
+          }
+          // let cartItem = {...Storage.getProduct(id)};
+          // cartItem.itemAmount++;
+          // cart = [...cart, cartItem];
+          // console.log(cart);
+          // Cart in local storage
+          Storage.saveCart(cart);
+          // Set cart values to local storage
+          this.setCartValues(cart);
+        }
+      })
     }
 
     clearCart() {
@@ -279,7 +309,14 @@ class Storage {
 
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem('products'));
-    return products.find(product => product.id === id);
+    return products.find(product => product.id === id); 
+  }
+
+  // Trial
+  static getProductItemAmount(itemAmount) {
+    let products = JSON.parse(localStorage.getItem('products'));
+    return products.find(product => product.itemAmount === itemAmount);
+
   }
 
   static saveCart(cart) {
@@ -306,6 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ui.getCartButtons();
         ui.listenersDOM();
         ui.cartLogic();
+        ui.DOMCartLogic();
         var swiper = new Swiper(".mySwiper", {
             navigation: {
               nextEl: ".swiper-button-next",

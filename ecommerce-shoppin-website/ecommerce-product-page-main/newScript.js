@@ -13,11 +13,12 @@ const cartContainer = document.querySelector('.container');
 const clearCartBtn = document.querySelector('.clear-cart');
 const cartEmpty = document.querySelector('#cart-empty');
 const cartFooter = document.querySelector('.cart-footer');
-
+var widths = [0, 700, 701];
 // cart 
 let cart = [];
 // buttons
 let buttonsDOM = [];
+let numDOM = [];
 
 // Classes and functions
 // products class 
@@ -50,8 +51,8 @@ class UI {
             <div id="img-container">
             <div class="image-area">
           <div class="imgs">
-                 <!-- Swiper -->
-            <div class="swiper mySwiper">
+                 <!-- Swiper 2-->
+            <div class="swiper mySwiper2" id="hidden">
               <div class="swiper-wrapper">
                 <div class="swiper-slide"> 
                  <img src="${product.imgsrc}" class="showcase-img">
@@ -69,6 +70,27 @@ class UI {
               
               <div class="swiper-button-next"></div> 
               <div class="swiper-button-prev"></div>
+            </div>
+                 <!-- Swiper 1-->
+            <div thumbSlider="" class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"> 
+                 <img src="${product.imgsrc}" class="showcase-img">
+                </div>
+                <div class="swiper-slide">
+                 <img src="${product.imgalt1}" class="showcase-img">
+                </div>
+                <div class="swiper-slide">
+                 <img src="${product.imgalt2}" class="showcase-img">
+                </div>
+                <div class="swiper-slide">  
+                 <img src="${product.imgalt3}" class="showcase-img">
+                </div>
+              </div>
+              
+              <div class="swiper-button-next"></div> 
+              <div class="swiper-button-prev"></div>
+
             </div>
             
           </div>
@@ -89,7 +111,7 @@ class UI {
                 <div>
                 <div class="cart-increase">
                   
-                  <i class="fa fa-minus" aria-hidden="true" data-id=${product.id}></i>
+                  <i class="fa fa-minus decrement" aria-hidden="true" data-id=${product.id}></i>
                   
                   <span class="num-available" data-id=${product.id}>
                    ${product.itemAmount}
@@ -126,6 +148,10 @@ class UI {
 
     }
 
+    cartButtonEvent() {
+
+    }
+
     getCartButtons() {
         const buttons = [...document.querySelectorAll(".add-cart-btn")];
         buttonsDOM = buttons;
@@ -152,7 +178,6 @@ class UI {
                   // Display cart item 
                   this.addCartItem(cartItem);
                   // Show cart item 
-                  this.showCartMessage();
                 });
             
         });
@@ -186,9 +211,6 @@ class UI {
       </span>
       `;
       cartContainer.appendChild(div);
-      cartEmpty.style.display = 'none';
-      // cartFooter.style.visibility = 'visible';
-      setTimeout(this.showCartMessage(), 2000);
     }
 
     showCartMessage() {
@@ -229,29 +251,32 @@ class UI {
         let id = e.target.dataset.id;
         let inCart = cart.find(collection => collection.id === id);
         let cartItem = {...Storage.getProduct(id)};
+        const nums = [...document.querySelectorAll('.num-available')];
+        const numid = nums.find(num => num.dataset.id === id);
+        const products = JSON.parse(localStorage.getItem('products'));
+        const productsIncart = products.find(product => product.id === id);
         if (e.target.classList.contains('increment')) {
           if(inCart) {
             inCart.itemAmount++;
-          //  let numAvailable = document.querySelector('.num-available');
-          //  console.log(numAvailable)
-          } else {
-            this.getCartButtons();
-            cart = [...cart, cartItem];
-            this.addCartItem(cartItem);
-            Storage.saveCart(cart);
-            // Set cart values to local storage
-            this.setCartValues(cart);
-            
+           productsIncart.itemAmount = inCart.itemAmount;
+          numid.textContent = inCart.itemAmount;
+          } 
+        } else if(e.target.classList.contains('decrement')) {
+          if(inCart) {
+            if(inCart.itemAmount === 1) {
+              return false;
+            } else {
+          inCart.itemAmount--;
+          productsIncart.itemAmount = inCart.itemAmount;
+          numid.textContent = inCart.itemAmount;
+            }
           }
-          // let cartItem = {...Storage.getProduct(id)};
-          // cartItem.itemAmount++;
-          // cart = [...cart, cartItem];
-          // console.log(cart);
-          // Cart in local storage
-          Storage.saveCart(cart);
-          // Set cart values to local storage
-          this.setCartValues(cart);
         }
+                
+                  // Cart in local storage
+                  Storage.saveCart(cart);
+                  // Set cart values to local storage
+                  this.setCartValues(cart);
       })
     }
 
@@ -300,6 +325,42 @@ class UI {
         cartOverlay.classList.add('transparentBcg');
     } 
 
+    smallScreenSize() {
+      var swiper = new Swiper(".mySwiper", {
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+          });
+    }
+
+    bigScreenSize() {
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+      });
+      var swiper2 = new Swiper(".mySwiper2", {
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+          swiper: swiper,
+        },
+      });
+    }
+
+    resizeFn() {
+      if (window.innerWidth >= widths[0] && window.innerWidth <= widths[1]) {
+        this.smallScreenSize();
+      } else{
+        this.bigScreenSize();
+      }
+    }
+
 }
 
 class Storage {
@@ -330,6 +391,42 @@ class Storage {
 
 }
 
+function smallScreenSize() {
+  var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+}
+
+function bigScreenSize() {
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+  var swiper2 = new Swiper(".mySwiper2", {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: swiper,
+    },
+  });
+}
+
+function resizeFn() {
+  if (window.innerWidth >= widths[0] && window.innerWidth <= widths[1]) {
+    smallScreenSize();
+  } else{
+    bigScreenSize();
+  }
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const ui = new UI();
@@ -344,11 +441,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ui.listenersDOM();
         ui.cartLogic();
         ui.DOMCartLogic();
-        var swiper = new Swiper(".mySwiper", {
-            navigation: {
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            },
-          });
+        window.onresize = resizeFn;
+        resizeFn()
+        // var swiper = new Swiper(".mySwiper", {
+        //     navigation: {
+        //       nextEl: ".swiper-button-next",
+        //       prevEl: ".swiper-button-prev",
+        //     },
+        //   });
     }) 
 })

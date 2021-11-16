@@ -315,7 +315,7 @@ nav {
   color: var(--second-color);
 }
 
-@media screen and (min-width: 1px) and (max-width: 700px) {
+@media screen and (min-width: 350px) and (max-width: 800px) {
   /* Navigation section */
   nav {
     padding: var(--normal-font-size);
@@ -411,7 +411,7 @@ nav {
   }
 
   .cart-increase .num-available {
-    margin: 0 100px;
+    margin: 0 40%;
     font-weight: bolder;
   }
 
@@ -496,17 +496,17 @@ nav {
     width: 100%;
   }
 
-  #hidden {
+  .hidden {
     display: none;
   }
 }
 
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 800px) {
   .container {
     max-width: 1500px;
     margin: 0 auto;
     /* overflow: auto; */
-    padding: 0 40px;
+    padding: 0 100px;
   }
 
   .fa-bars,
@@ -519,13 +519,47 @@ nav {
     justify-content: space-between;
   }
 
+  .nav li:hover {
+    border-bottom: var(--primary-color) 2px solid;
+  }
+
+  #profile {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-icon {
+    font-size: var(--h1-font-size);
+  }
+  .nav-icon:hover {
+    opacity: 0.4;
+  }
+
+  .cart-btn {
+    margin-right: var(--mb-1);
+    margin: 0 40px;
+  }
+
+  .cart-avatar-btn {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .list-items {
+    width: 800px;
+    display: block;
+  }
+
   .list-items ul {
     display: flex;
     flex-direction: row;
   }
 
   .list-items li {
-    padding: 20px;
+    padding: 30px 20px;
     margin: 5px 10px;
   }
 
@@ -561,21 +595,21 @@ nav {
   .cart-increase {
     border-radius: 10px;
     height: 50px;
-    width: 30%;
+    width: 40%;
     align-items: center;
     justify-content: center;
     display: flex;
   }
 
   .cart-increase .num-available {
-    margin: 10px;
+    margin: 25%;
     font-weight: bolder;
   }
 
   .add-cart-btn {
     padding: 10px;
     height: 50px;
-    width: 70%;
+    width: 60%;
     border-radius: 10px;
     margin: 10px 10px;
   }
@@ -614,7 +648,7 @@ nav {
   }
 
   .swiper {
-    width: 50%;
+    width: 60%;
     height: 300px;
     margin-left: 0;
     margin-right: 0;
@@ -638,7 +672,7 @@ nav {
   }
 
   .mySwiper .swiper-slide {
-    width: 25%;
+    width: 50%;
     height: 100%;
     opacity: 0.4;
   }
@@ -657,10 +691,15 @@ nav {
 
   .swiper-slide img:hover {
     border: var(--primary-color) 3px solid;
+    cursor: pointer;
   }
 
   .swiper-button-next,
   .swiper-button-prev {
     display: none !important;
+  }
+
+  .hidden {
+    display: block;
   }
 }

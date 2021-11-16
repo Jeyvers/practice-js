@@ -13,7 +13,7 @@ const cartContainer = document.querySelector('.cart-container');
 const clearCartBtn = document.querySelector('.clear-cart');
 const cartEmpty = document.querySelector('#cart-empty');
 const cartFooter = document.querySelector('.cart-footer');
-var widths = [0, 700, 701];
+var widths = [0, 800];
 // cart 
 let cart = [];
 // buttons
@@ -52,7 +52,7 @@ class UI {
             <div class="image-area">
           <div class="imgs">
                  <!-- Swiper 2-->
-            <div class="swiper mySwiper2" id="hidden">
+            <div class="swiper mySwiper2 hidden">
               <div class="swiper-wrapper">
                 <div class="swiper-slide"> 
                  <img src="${product.imgsrc}" class="showcase-img">
@@ -391,43 +391,6 @@ class Storage {
 
 }
 
-function smallScreenSize() {
-  var swiper = new Swiper(".mySwiper", {
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-}
-
-function bigScreenSize() {
-  var swiper = new Swiper(".mySwiper", {
-    spaceBetween: 10,
-    slidesPerView: 4,
-    freeMode: true,
-    watchSlidesProgress: true,
-  });
-  var swiper2 = new Swiper(".mySwiper2", {
-    spaceBetween: 10,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    thumbs: {
-      swiper: swiper,
-    },
-  });
-}
-
-function resizeFn() {
-  if (window.innerWidth >= widths[0] && window.innerWidth <= widths[1]) {
-    smallScreenSize();
-  } else{
-    bigScreenSize();
-  }
-}
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const ui = new UI();
     const products = new Products();
@@ -436,20 +399,12 @@ document.addEventListener('DOMContentLoaded', () => {
     products.getProducts().then(products => {
         ui.displayProducts(products);
         Storage.saveProducts(products);
-        window.onresize = resizeFn;
-        resizeFn()
     }).then(() => {
         ui.getCartButtons();
         ui.listenersDOM();
         ui.cartLogic();
         ui.DOMCartLogic();
-        window.onresize = resizeFn;
-        resizeFn()
-        // var swiper = new Swiper(".mySwiper", {
-        //     navigation: {
-        //       nextEl: ".swiper-button-next",
-        //       prevEl: ".swiper-button-prev",
-        //     },
-        //   });
+        ui.resizeFn();
+        window.onresize = resizeFn();
     }) 
 })

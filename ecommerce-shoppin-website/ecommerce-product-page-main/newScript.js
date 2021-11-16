@@ -9,7 +9,7 @@ const cartOverlay = document.querySelector('.cart-overlay');
 const cartContent = document.querySelector('.cart-products');
 const cartTotal = document.querySelector('.cart-total');
 const cartItems = document.querySelector('.cart-items');
-const cartContainer = document.querySelector('.container');
+const cartContainer = document.querySelector('.cart-container');
 const clearCartBtn = document.querySelector('.clear-cart');
 const cartEmpty = document.querySelector('#cart-empty');
 const cartFooter = document.querySelector('.cart-footer');
@@ -108,7 +108,7 @@ class UI {
                   <span class="amount">$${product.price}</span>
                 </h1>
         
-                <div>
+                <div class="cart-functions">
                 <div class="cart-increase">
                   
                   <i class="fa fa-minus decrement" aria-hidden="true" data-id=${product.id}></i>
@@ -436,6 +436,8 @@ document.addEventListener('DOMContentLoaded', () => {
     products.getProducts().then(products => {
         ui.displayProducts(products);
         Storage.saveProducts(products);
+        window.onresize = resizeFn;
+        resizeFn()
     }).then(() => {
         ui.getCartButtons();
         ui.listenersDOM();

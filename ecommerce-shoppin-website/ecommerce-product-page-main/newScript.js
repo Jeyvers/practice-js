@@ -254,12 +254,26 @@ class UI {
         const nums = [...document.querySelectorAll('.num-available')];
         const numid = nums.find(num => num.dataset.id === id);
         const products = JSON.parse(localStorage.getItem('products'));
-        const productsIncart = products.find(product => product.id === id);
+         const productsIncart = products.find(product => product.id === id);
+        // if (e.target.classList.contains('increment')) {
+        //   if(inCart) {
+        //     inCart.itemAmount++;
+        //    productsIncart.itemAmount = inCart.itemAmount;
+        //   numid.textContent = inCart.itemAmount;
+        //   } 
         if (e.target.classList.contains('increment')) {
           if(inCart) {
-            inCart.itemAmount++;
-           productsIncart.itemAmount = inCart.itemAmount;
-          numid.textContent = inCart.itemAmount;
+           let addAmount = e.target;
+           let id = addAmount.dataset.id;
+           let tempItem = cart.find(item => item.id === id);
+           tempItem.itemAmount = tempItem.itemAmount + 1;
+           Storage.saveCart(cart);
+           this.setCartValues(cart);
+           addAmount.previousElementSibling.innerText = tempItem.itemAmount;
+           let tempItem2 = products.find(collection => collection.id === id);
+           tempItem2.itemAmount = tempItem2.itemAmount + 1;
+          Storage.saveProducts(products);
+
           } 
         } else if(e.target.classList.contains('decrement')) {
           if(inCart) {
@@ -371,13 +385,6 @@ class Storage {
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem('products'));
     return products.find(product => product.id === id); 
-  }
-
-  // Trial
-  static getProductItemAmount(itemAmount) {
-    let products = JSON.parse(localStorage.getItem('products'));
-    return products.find(product => product.itemAmount === itemAmount);
-
   }
 
   static saveCart(cart) {

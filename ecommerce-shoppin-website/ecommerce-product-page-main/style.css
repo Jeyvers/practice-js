@@ -227,6 +227,10 @@ nav {
   visibility: hidden;
 }
 
+.transparentBcg {
+  visibility: visible;
+}
+
 .cart-area {
   top: 70px;
   position: fixed;

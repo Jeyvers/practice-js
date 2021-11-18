@@ -211,12 +211,21 @@ class UI {
       </span>
       `;
       cartContainer.appendChild(div);
+      cartEmpty.innerHTML = '';
+      cartEmpty.style.display = 'none';
     }
 
-    showCartMessage() {
-      const p = document.createElement('p');
-      p.classList.add("cart-message");
-      p.textContent = 'Item added to cart';
+    showCartMessage(message) {
+      const h3 = document.createElement('h3');
+      h3.className = `cart-message`;
+      h3.appendChild(document.createTextNode(message))
+      const showcase = document.querySelector('.showcase');
+      showcase.appendChild(h3);
+
+      // Vanish in 4 seconds 
+      setTimeout(() => {
+        document.querySelector('.cart-message').remove()
+      }, 2000);
     }
 
     setupApp() {
@@ -274,16 +283,21 @@ class UI {
            tempItem2.itemAmount = tempItem2.itemAmount + 1;
           Storage.saveProducts(products);
 
-          } 
+          } else {
+            this.showCartMessage('Item has not been added to cart')
+          }
         } else if(e.target.classList.contains('decrement')) {
           if(inCart) {
             if(inCart.itemAmount === 1) {
+              this.showCartMessage('Minimum Amount is 1')
               return false;
             } else {
           inCart.itemAmount--;
           productsIncart.itemAmount = inCart.itemAmount;
           numid.textContent = inCart.itemAmount;
             }
+          } else {
+            this.showCartMessage('Item has not been added to cart')
           }
         }
                 
@@ -304,7 +318,6 @@ class UI {
           cartContainer.removeChild(cartContainer.children[0]);
         }
         cartEmpty.innerHTML = 'Your cart is empty';
-        // cartFooter.style.visibility = 'hidden';
         cartEmpty.style.display = 'block';
       }
 
@@ -316,7 +329,12 @@ class UI {
       Storage.saveCart(cart);
       let button = this.getSingleButton(id);
       button.disabled = false;
-      button.innerHTML = ` <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart`
+      button.innerHTML = ` <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart`;
+      this.showCartMessage('Item deleted succesfully')
+      if(cart = []) {
+        cartEmpty.innerHTML = 'Your cart is empty';
+        cartEmpty.style.display = 'block';
+      }
     };
 
     getSingleButton(id) {
@@ -412,6 +430,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ui.cartLogic();
         ui.DOMCartLogic();
         ui.resizeFn();
-        window.onresize = resizeFn();
+        window.onresize = ui.resizeFn();
     }) 
 })

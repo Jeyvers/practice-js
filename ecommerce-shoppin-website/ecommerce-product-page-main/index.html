@@ -9,14 +9,15 @@
     crossorigin="anonymous"
   ></script>
   <link rel="stylesheet" href="style.css">
-   <!-- Link Swiper's CSS -->
-   <link
-   rel="stylesheet"
-   href="https://unpkg.com/swiper/swiper-bundle.min.css"
- />
+  <!-- Link Swiper's CSS -->
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper/swiper-bundle.min.css"
+/>
     <title>Buy your quality shoe wears | Jeyvers</title>
 </head>
 <body>
+  <div class="container">
   <nav class="nav flex">
       <div>
           <span class="nav-icon">
@@ -41,7 +42,7 @@
             </ul>
         </div>
       </div>
-      <div>
+      <div class="cart-avatar-btn">
           <div class="cart-btn">
               <span class="nav-icon" id="view-cart">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -53,74 +54,55 @@
             
   </nav>
   <section class="showcase"> 
-    <div id="img-container">
-  <!-- Image Area -->
-  <span class="img-icon" id="next">
-    <i class="fa fa-angle-right" aria-hidden="true"></i>
-  </span>
-  <span class="img-icon" id="prev">
-    <i class="fa fa-angle-left" aria-hidden="true"></i>
-  </span>
+    <div class="products-center">
 
-    <div class="image-area">
-  <div class="imgs">
-      <img src="images/image-product-1.jpg" class="current showcase-img">
-      <img src="images/image-product-2.jpg" class="showcase-img">
-      <img src="images/image-product-3.jpg" class="showcase-img">
-      <img src="images/image-product-4.jpg" class="showcase-img">
-    
-  </div>
-    </div>
-
-    <div class="image-information-area">
-      <h4>sneaker company</h4>
-      <h1>Fall Limited Edition Sneakers</h1>
-      <p>
-        These low-profile sneakers are your perfect casual wear companion. Featuring a 
-        durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
-
-        <h1>
-          $125.00
-          <span class="discount-percentage">50%</span>
-          <span class="discount-amount">$250.00</span>
-        </h1>
-
-        <div>
-        <div class="cart-increase">
-          <span class="decrement">
-          <i class="fa fa-minus" aria-hidden="true"></i>
-          </span>
-          <span class="num-available">
-            0
-          </span>
-          <span class="increment">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </span>
-          </div>
-          <button class="add-cart-btn">
-            <i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
-          </button>
-        </div>
-
-    </div>
-  </div>
+</div>
   </section> 
 
 <div class="cart-overlay">
-
-
   <div class="cart-area">
     <div class="cart-header">
       <h2>Cart</h2>
+     <button class="clear-cart">Clear Cart</button>
+
     </div>
     <div class="cart-products">
-      <div id="cart-empty">Your cart is empty</div>
+      <div class="cart-container">
+      <!-- <div class="content">
+        <img src="./images/image-product-1-thumbnail.jpg" alt="">
+        <div class="content-info">
+          Autumn Limited Edition...
+          <span class="discount-amount">$125.00</span> x <span class="num-available">3</span> <span class="total-amount"> &nbsp;  $375.00</span>
+        </div>
+        <span class="trash-btn">
+          <i class="fa fa-trash" aria-hidden="true"></i> 
+        </span>
+      </div> -->
+        <div id="cart-empty">Your cart is empty</div> 
     </div>
-
-</div> 
+    <div class="cart-footer">
+      <h3>Your Total : $ <span class="cart-total">0</span></h3>
+      <button class="checkout-btn">Checkout</button>
+    </div>
+  </div>
+  </div>
+ </div>
 </div>
 
+
 <!-- JS -->
-<script src="script.js"></script>
+    <script src="script.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <!-- <script>
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script> -->
 </body>
 </html>

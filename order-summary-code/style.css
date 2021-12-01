@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap");
+:root {
+  --pale-blue: hsl(225, 100%, 94%);
+  --bright-blue: hsl(245, 75%, 52%);
+  --very-pale-blue: hsl(225, 100%, 98%);
+  --desaturated-blue: hsl(224, 23%, 55%);
+  --dark-blue: hsl(223, 47%, 23%);
+  --font-size: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url(./images/pattern-background-desktop.svg);
+  background-repeat: no-repeat;
+  background-position: center cover;
+  font-size: var(--font-size);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: var(--dark-blue);
+  font-family: "Red Hat Display", sans-serif;
+}
+
+.container {
+  width: 300px;
+  height: 500px;
+  background: white;
+  border-radius: 1.2em;
+  box-shadow: var(--pale-blue) 1px 2px 50px 5px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  background: url(./images/illustration-hero.svg) center center/cover;
+  width: 300px;
+  height: 150px;
+  border-radius: 1.2em 1.2em 0 0;
+}
+.order-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  line-height: 1.5em;
+}
+
+.order-information h1 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.order-information p {
+  text-align: center;
+}
+
+.order-plan {
+  background-color: var(--very-pale-blue);
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  height: 60px;
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+  padding: 10px;
+}
+
+.plan {
+  display: inline-flex;
+}
+
+.plan span img {
+  width: 70%;
+  height: 80%;
+}
+
+.plan p span {
+  font-weight: 600;
+}
+.order-plan a {
+  color: var(--bright-blue);
+}
+.order-plan a:hover {
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.btn {
+  width: 80%;
+  text-align: center;
+  text-decoration: none;
+  padding: 9px 27px;
+}
+
+.btn-blue {
+  background-color: var(--bright-blue);
+  border-radius: 0.5em;
+  color: var(--very-pale-blue);
+  font-size: 0.9em;
+  font-weight: 600;
+  box-shadow: var(--desaturated-blue) 0 0 2px;
+  margin-bottom: 15px;
+}
+
+.btn-blue:hover {
+  opacity: 0.6;
+}
+
+.btn-white {
+  font-weight: 700;
+  opacity: 0.6;
+}
+
+.btn-white:hover {
+  opacity: 1;
+}

@@ -1,0 +1,59 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+:root {
+  
+    /* Colors */
+    /* change to favorite color */
+    --hue-color: 250; 
+    /* Purple 250 - Green 142 - Blue 230 - Pink 340 */
+
+
+    /* HUE COLORS */
+    --first-color:
+hsl(var(--hue-color), 69%, 61%) ;
+--first-color-second:
+hsl(var(--hue-color), 69%, 61%) ;
+--first-color-alt:
+hsl(var(--hue-color),57%, 53%) ;
+--first-color-lighter:
+hsl(var(--hue-color), 92%, 85%) ;
+--title-color:
+hsl(var(--hue-color), 8%, 15%) ;
+--text-color :
+hsl(var(--hue-color), 8%, 45%) ;
+--text-color-light:
+hsl(var(--hue-color), 8%, 65%) ;
+--input-color:
+hsl(var(--hue-color), 70%, 96%) ;
+--body-color:
+hsl(var(--hue-color), 60%, 99%) ;
+--container-color:
+ #FFF;
+ --scroll-bar-color:
+hsl(var(--hue-color), 12%, 90%) ;
+ --scroll-thumb-color:
+hsl(var(--hue-color), 12%, 80%) ;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family:'Poppins', sans-serif; 
+
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.card {
+    background-color: var(--first-color);
+    border-radius : 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+    color: var(--text-color);
+}

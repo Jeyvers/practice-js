@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
 :root {
   /* Text */
   --font-size: 16px;
@@ -16,10 +17,236 @@
   --sc-white: hsl(0, 0%, 100%);
   --sc-light-grayish-violet: hsl(270, 20%, 96%);
   --sc-very-light-magenta: hsl(289, 100%, 72%);
+
+  /* Font weights */
+  --wgh-normal: 400;
+  --wgh-medium: 500;
+  --wgh-big: 700;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  position: relative;
+}
+
+.container {
+  display: grid;
+
+  /* grid-template-columns: auto max-content; */
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80px;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  max-width: 450px;
+  max-height: 550px;
+  background-image: linear-gradient(
+    45deg,
+    var(--gd-light-violet),
+    var(--gd-light-magenta)
+  );
+  border-radius: 0 0 50% 50%;
+  z-index: 1;
+}
+
+.content-container {
+  background: var(--sc-white);
+  /* background: red; */
+  border-radius: 1.5rem;
+  box-shadow: 10px 15px 16px 5px var(--sc-light-grayish-violet);
+  z-index: 10;
+  width: 260px;
+  height: 530px;
+  margin-top: 80px;
+  margin-left: 300px;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  position: relative;
+  width: 90%;
+  height: 15%;
+  background-image: linear-gradient(
+    45deg,
+    var(--gd-light-violet),
+    var(--gd-light-magenta)
+  );
+  border-radius: 1.5rem 1.5rem 0 0;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 36px;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 45%;
+  background-color: var(--sc-white);
+  border-radius: 0.9rem;
+}
+
+.header i {
+  color: var(--sc-white);
+}
+
+.fa-ellipsis-v {
+  margin-top: 10px;
+}
+
+.contact-information {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-information div {
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--sc-white);
+  border-radius: 50%;
+  background: url(./images/avatar.jpg) center center/cover;
+}
+
+.contact-information span,
+.contact-information h1 {
+  font-size: 0.7rem;
+  color: var(--sc-white);
+}
+
+.contact-information span {
+  font-size: 0.5rem;
+  margin: 5px;
+}
+
+.header .contact-information i {
+  font-size: 1.2rem;
+}
+
+.details {
+  background: var(--sc-light-grayish-violet);
+  /* background-color: red; */
+  width: 90%;
+  height: 430px;
+  font-size: 0.6rem;
+  color: var(--gd-light-violet);
+  border-radius: 0 0 1.5rem 1.5rem;
+}
+
+.details-wrapper {
+  max-height: 90%;
+  overflow: hidden;
+}
+
+.details span {
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 15px 15px 15px 0;
+}
+
+.details span p {
+  max-width: 160px;
+}
+
+.receiver-message {
+  float: left;
+  margin-left: 10px;
+  background: rgba(213, 173, 240, 0.2);
+}
+
+.sender-message {
+  float: right;
+  margin-right: 10px;
+  background: var(--sc-white);
+  color: var(--txt-desturated-dark-violet);
+}
+
+.span-img {
+  background: transparent;
+  margin-bottom: -10px;
+}
+
+.span-img img {
+  max-width: 40px;
+  max-height: 40px;
+
+  border-radius: 1rem;
+}
+
+.details .receiver-message.cards {
+  background-image: linear-gradient(
+    45deg,
+    var(--gd-light-violet),
+    var(--gd-light-magenta)
+  );
+  color: var(--sc-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1rem;
+  padding: 8px;
+  width: 150px;
+}
+
+.receiver-message.cards p i {
+  padding: 0 5px;
+  font-size: 1rem;
+}
+
+.walk-amount {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.message-area {
+  margin: 10px;
+  position: relative;
+}
+
+.send-message {
+  width: 100%;
+  padding: 12px;
+  border-radius: 1.5rem;
+  border: none;
+  font-size: 0.7rem;
+  color: var(--txt-grayish-blue);
+}
+
+.message-area i {
+  position: absolute;
+  font-size: 1rem;
+  right: 5px;
+  top: 5px;
+  background: var(--txt-very-dark-desturated-violet);
+  width: 27px;
+  height: 27px;
+  color: var(--sc-white);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
 }

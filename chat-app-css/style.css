@@ -1,0 +1,25 @@
+:root {
+  /* Text */
+  --font-size: 16px;
+  --txt-pale-violet: hsl(276, 100%, 81%);
+  --txt-moderate-violet: hsl(276, 55%, 52%);
+  --txt-desturated-dark-violet: hsl(271, 15%, 43%);
+  --txt-grayish-blue: hsl(206, 6%, 79%);
+  --txt-very-dark-desturated-violet: hsl(271, 36%, 24%);
+  --txt-dark-grayish-violet: hsl(270, 7%, 64%);
+
+  /* Gradients */
+  --gd-light-magenta: hsl(293, 100%, 63%);
+  --gd-light-violet: hsl(264, 100%, 61%);
+
+  /* Secondary */
+  --sc-white: hsl(0, 0%, 100%);
+  --sc-light-grayish-violet: hsl(270, 20%, 96%);
+  --sc-very-light-magenta: hsl(289, 100%, 72%);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

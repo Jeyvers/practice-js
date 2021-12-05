@@ -302,10 +302,14 @@ body {
     overflow-wrap: break-word;
   }
 
+  .section-two h1 {
+    padding: 20px 0;
+  }
+
   .container::before {
     width: 80%;
     max-width: 490px;
-    max-height: 500px;
+    max-height: 450px;
   }
 
   .container::after {
@@ -319,6 +323,6 @@ body {
 
 @media screen and (max-width: 500px) {
   .content-container {
-    margin-left: 100px;
+    margin-left: 50px;
   }
 }

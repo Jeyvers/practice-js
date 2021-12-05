@@ -32,13 +32,14 @@
 
 body {
   font-family: "Rubik", sans-serif;
-  position: relative;
+  overflow: hidden;
 }
 
 .container {
   display: grid;
-
-  /* grid-template-columns: auto max-content; */
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit), minmax(max-content, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .container::before {
@@ -57,6 +58,20 @@ body {
     var(--gd-light-magenta)
   );
   border-radius: 0 0 50% 50%;
+  z-index: 1;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 100px;
+  bottom: 0;
+  right: -120px;
+  width: 60%;
+  height: 600px;
+  max-width: 460px;
+  background: rgba(245, 243, 247, 0.4);
+  border-radius: 50% 50% 0 0;
   z-index: 1;
 }
 
@@ -202,8 +217,8 @@ body {
 .details .receiver-message.cards {
   background-image: linear-gradient(
     45deg,
-    var(--gd-light-violet),
-    var(--gd-light-magenta)
+    var(--gd-light-magenta),
+    var(--gd-light-violet)
   );
   color: var(--sc-white);
   display: flex;
@@ -249,4 +264,61 @@ body {
   border-radius: 50%;
   display: grid;
   place-items: center;
+}
+
+/* Section Two */
+.section-two {
+  margin-top: 17rem;
+  line-height: 2rem;
+  width: 450px;
+  color: var(--txt-desturated-dark-violet);
+  font-size: 1.2rem;
+  z-index: 10;
+}
+
+.section-two h1 {
+  font-weight: 500;
+}
+
+.section-two p {
+  padding-block: 1.5rem;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    overflow: scroll;
+  }
+
+  .container {
+    grid-template-columns: minmax(max-content, 1fr);
+  }
+
+  .section-two {
+    margin-top: 5rem;
+    text-align: center;
+    width: 100vw;
+    padding: 3rem;
+    overflow-wrap: break-word;
+  }
+
+  .container::before {
+    width: 80%;
+    max-width: 490px;
+    max-height: 500px;
+  }
+
+  .container::after {
+    display: none;
+  }
+
+  .content-container {
+    margin-left: 180px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .content-container {
+    margin-left: 100px;
+  }
 }

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+<body>
+  <h2 class="title">SPLI <br> TTER </h2>
+  <section class="wrapper"> 
+    <div class="container">
+      <div class="card">
+        <div class="column">
+          <h3>Bill</h3>
+          <input type="text" placeholder="0">
+          <i class="fas fa-dollar-sign"></i>
+        </div>
+        <div class="column">
+            <h3>Select Tip %</h3>
+          <button class="btn btn-dark">5%</button>
+          <button class="btn btn-dark">10%</button>
+          <button class="btn btn-dark">15%</button>
+          <button class="btn btn-dark">25%</button>
+          <button class="btn btn-dark">50%</button>
+          <button class="btn btn-light">Custom</button>
+        </div>
+        <div class="column">
+          <h3>Number of People</h3>
+         <input type="text" placeholder="0">
+        <i class="fas fa-user"></i>
+        </div>
+      </div>
+      <div class="card card-dark">
+        <div class="card-columns">
+        <div class="card-column">
+          <span class="card-column-span">
+            <h3>Tip Amount</h3>
+            <p>/ person</p>
+          </span>
+          <p class="card-column-text" >$<span class="tip-amount">0.00</span>
+          </p>
+        </div>
+        <div class="card-column">
+          <span class="card-column-span">
+            <h3>Total</h3>
+         <p>/ person</p> 
+          </span>
+          <p class="card-column-text">$<span id="total-per-person">0.00</span>
+          </p>
+        </div>
+        </div>
+
+        <button class="btn-reset">Reset</button>
+      </div>
+    </div>
+  </section> 
+
+
+<!-- 
+  Total
+  / person
+
+  Reset -->
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>

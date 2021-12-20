@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+:root {
+  /* Coloring */
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --dark-cyan: hsl(183, 96%, 44%);
+  --dark-greyish-cyan: hsl(186, 14%, 43%);
+  --dark-grayish-cyan: hsl(184, 14%, 56%);
+  --light-grayish-cyan: hsl(185, 41%, 84%);
+  --lighter-grayish-cyan: hsl(189, 41%, 97%);
+  --white: hsl(0, 0%, 100%);
+
+  /* Typography */
+  --normal-font-size: 1rem;
+  --small-font-size: 0.75rem;
+  --medium-font-size: 1.5rem;
+  --big-font-size: 1.75rem;
+  --font-family: "Space Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--light-grayish-cyan);
+  font-family: "Space Mono", monospace;
+}
+
+input {
+  background-color: var(--lighter-grayish-cyan);
+  padding: 1rem;
+  width: 270px;
+  border: none;
+  height: 30px;
+}
+
+.title {
+  text-align: center;
+  color: var(--very-dark-cyan);
+  margin: 3rem;
+  letter-spacing: 0.5rem;
+  font-size: var(--normal-font-size);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  padding: 2rem;
+  max-width: 800px;
+  flex-wrap: wrap;
+  border-radius: 2rem;
+  gap: 30px;
+}
+
+.container h3 {
+  font-size: var(--normal-font-size);
+  font-weight: lighter;
+  padding-bottom: 0.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 290px;
+  border-radius: 1rem;
+  height: 300px;
+}
+
+.card-dark {
+  background-color: var(--very-dark-cyan);
+  padding: 1.5rem;
+  color: var(--white);
+}
+
+.card-column {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 1rem;
+}
+
+.card-column-text {
+  color: var(--dark-cyan);
+  font-weight: bold;
+  font-size: var(--big-font-size);
+}
+
+.card-column-span p {
+  color: var(--light-grayish-cyan);
+  font-size: var(--small-font-size);
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  width: 5rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  margin: 0.3rem;
+  border: none;
+}
+
+.btn-light {
+  background-color: var(--lighter-grayish-cyan);
+  color: var(--very-dark-cyan);
+  font-weight: lighter;
+}
+
+.btn-dark {
+  background-color: var(--very-dark-cyan);
+
+  color: var(--white);
+}
+
+.btn-dark:hover {
+  background-color: var(--light-grayish-cyan);
+}
+
+.input-with-item {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
 const App = () => {
+  const [tip, useTip] = useState(0);
+  const [tipAmount, useTipAmount] = useState('0.00');
+  const [total, setTotal] = useState('0.00');
+  const [bill, setBill] = useState(0);
+  const [noOfPeople, setNoOfPeople] = useState(0);
+
+  const calculate = () => {};
+
+  useEffect(() => {
+    calculate();
+    return () => {
+      'cleanup';
+    };
+  }, [bill, noOfPeople, tip]);
   return (
     <body>
       <h2 class='title'>
@@ -11,7 +25,12 @@ const App = () => {
           <div class='card'>
             <div class='column'>
               <h3>Bill</h3>
-              <input type='text' placeholder='0' id='bill-input' />
+              <input
+                type='text'
+                placeholder='0'
+                id='bill-input'
+                onChange={(e) => setBill(e.target.value)}
+              />
               <i class='fas fa-dollar-sign'></i>
             </div>
             <div class='column'>
@@ -35,7 +54,12 @@ const App = () => {
             </div>
             <div class='column'>
               <h3>Number of People</h3>
-              <input type='text' placeholder='0' id='people-input' />
+              <input
+                type='text'
+                placeholder='0'
+                id='people-input'
+                onChange={(e) => setNoOfPeople(e.target.value)}
+              />
               <i class='fas fa-user'></i>
             </div>
           </div>
@@ -47,7 +71,7 @@ const App = () => {
                   <p>/ person</p>
                 </span>
                 <p class='card-column-text'>
-                  $<span id='tip-amount'>0.00</span>
+                  $<span id='tip-amount'>{tipAmount}</span>
                 </p>
               </div>
               <div class='card-column'>
@@ -56,7 +80,7 @@ const App = () => {
                   <p>/ person</p>
                 </span>
                 <p class='card-column-text'>
-                  $<span id='total-per-person'>0.00</span>
+                  $<span id='total-per-person'>{total}</span>
                 </p>
               </div>
             </div>

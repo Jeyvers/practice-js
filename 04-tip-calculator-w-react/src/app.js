@@ -22,6 +22,14 @@ const App = () => {
     }
   };
 
+  // Didn't work, will try again later.
+  const setDefaults = () => {
+    console.log('Setting Defaults');
+    setBill(0);
+    setNoOfPeople(0);
+    setTipPercentage(0.05);
+  };
+
   useEffect(() => {
     calculate();
     return () => {
@@ -104,7 +112,9 @@ const App = () => {
               </div>
             </div>
 
-            <button className='btn-reset'>Reset</button>
+            <button className='btn-reset' onClick={() => setDefaults()}>
+              Reset
+            </button>
           </div>
         </div>
       </section>

@@ -1,29 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const App = () => {
-  const [tip, useTip] = useState(0);
-  const [tipAmount, useTipAmount] = useState('0.00');
+  // const [tip, setTip] = useState(0);
+  const [tipAmount, setTipAmount] = useState('0.00');
   const [total, setTotal] = useState('0.00');
   const [bill, setBill] = useState(0);
   const [noOfPeople, setNoOfPeople] = useState(0);
+  const [tipPercentage, setTipPercentage] = useState(0.05);
 
-  const calculate = () => {};
+  const calculate = () => {
+    if (bill && noOfPeople && tipPercentage) {
+      const billPerPerson = +(bill / noOfPeople);
+      const tip = +(tipPercentage * billPerPerson);
+      const total = +(tip + billPerPerson);
+      setTipAmount(parseFloat(tip.toFixed(2)));
+      setTotal(parseFloat(total.toFixed(2)));
+
+      console.log(billPerPerson, tip, total);
+    } else {
+      return;
+    }
+  };
 
   useEffect(() => {
     calculate();
     return () => {
-      'cleanup';
+      console.log('cleanup');
     };
-  }, [bill, noOfPeople, tip]);
+  }, [bill, noOfPeople, tipPercentage]);
   return (
-    <body>
-      <h2 class='title'>
+    <div>
+      <h2 className='title'>
         SPLI <br /> TTER{' '}
       </h2>
-      <section class='wrapper'>
-        <div class='container'>
-          <div class='card'>
-            <div class='column'>
+      <section className='wrapper'>
+        <div className='container'>
+          <div className='card'>
+            <div className='column'>
               <h3>Bill</h3>
               <input
                 type='text'
@@ -31,28 +44,34 @@ const App = () => {
                 id='bill-input'
                 onChange={(e) => setBill(e.target.value)}
               />
-              <i class='fas fa-dollar-sign'></i>
+              <i className='fas fa-dollar-sign'></i>
             </div>
-            <div class='column'>
+            <div
+              className='column'
+              id='tipContainer'
+              onClick={(e) => {
+                setTipPercentage(e.target.value / 100);
+              }}
+            >
               <h3>Select Tip %</h3>
-              <button class='btn btn-dark'>
-                <span id='tip'>5</span>%
+              <button className='btn btn-dark' value={5}>
+                5%
               </button>
-              <button class='btn btn-dark'>
-                <span id='tip'>10</span>%
+              <button className='btn btn-dark' value={10}>
+                10%
               </button>
-              <button class='btn btn-dark'>
-                <span id='tip'>15</span>%
+              <button className='btn btn-dark' value={15}>
+                15%
               </button>
-              <button class='btn btn-dark'>
-                <span id='tip'>25</span>%
+              <button className='btn btn-dark' value={25}>
+                25%
               </button>
-              <button class='btn btn-dark'>
-                <span id='tip'>50</span>%
+              <button className='btn btn-dark' value={50}>
+                50%
               </button>
-              <button class='btn btn-light custom'>Custom</button>
+              <button className='btn btn-light custom'>Custom</button>
             </div>
-            <div class='column'>
+            <div className='column'>
               <h3>Number of People</h3>
               <input
                 type='text'
@@ -60,38 +79,38 @@ const App = () => {
                 id='people-input'
                 onChange={(e) => setNoOfPeople(e.target.value)}
               />
-              <i class='fas fa-user'></i>
+              <i className='fas fa-user'></i>
             </div>
           </div>
-          <div class='card card-dark'>
-            <div class='card-columns'>
-              <div class='card-column'>
-                <span class='card-column-span'>
+          <div className='card card-dark'>
+            <div className='card-columns'>
+              <div className='card-column'>
+                <span className='card-column-span'>
                   <h3>Tip Amount</h3>
                   <p>/ person</p>
                 </span>
-                <p class='card-column-text'>
+                <p className='card-column-text'>
                   $<span id='tip-amount'>{tipAmount}</span>
                 </p>
               </div>
-              <div class='card-column'>
-                <span class='card-column-span'>
+              <div className='card-column'>
+                <span className='card-column-span'>
                   <h3>Total</h3>
                   <p>/ person</p>
                 </span>
-                <p class='card-column-text'>
+                <p className='card-column-text'>
                   $<span id='total-per-person'>{total}</span>
                 </p>
               </div>
             </div>
 
-            <button class='btn-reset'>Reset</button>
+            <button className='btn-reset'>Reset</button>
           </div>
         </div>
       </section>
 
       <script src='./script.js'></script>
-    </body>
+    </div>
   );
 };
 

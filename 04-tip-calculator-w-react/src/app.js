@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaDollarSign, FaUser } from 'react-icons/fa';
 
 const App = () => {
   // const [tip, setTip] = useState(0);
@@ -7,8 +8,6 @@ const App = () => {
   const [bill, setBill] = useState(0);
   const [noOfPeople, setNoOfPeople] = useState(0);
   const [tipPercentage, setTipPercentage] = useState(0.05);
-  // const billForm = useRef(null);
-  // const noOfPeopleForm = useRef(null);
 
   const calculate = () => {
     if (bill && noOfPeople && tipPercentage) {
@@ -56,7 +55,10 @@ const App = () => {
                 id='bill-input'
                 onChange={(e) => setBill(e.target.value)}
               />
-              <i className='fas fa-dollar-sign'></i>
+
+              <i>
+                <FaDollarSign />
+              </i>
             </div>
             <div
               className='column'
@@ -96,7 +98,10 @@ const App = () => {
                 id='people-input'
                 onChange={(e) => setNoOfPeople(e.target.value)}
               />
-              <i className='fas fa-user'></i>
+
+              <i>
+                <FaUser />
+              </i>
             </div>
           </div>
           <div className='card card-dark'>

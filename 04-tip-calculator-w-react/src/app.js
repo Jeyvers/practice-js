@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaDollarSign, FaUser } from 'react-icons/fa';
 
 const App = () => {
@@ -16,8 +16,6 @@ const App = () => {
       const total = +(tip + billPerPerson);
       setTipAmount(parseFloat(tip.toFixed(2)));
       setTotal(parseFloat(total.toFixed(2)));
-
-      console.log(billPerPerson, tip, total);
     } else {
       return;
     }
@@ -39,6 +37,9 @@ const App = () => {
   useEffect(() => {
     calculate();
   }, [bill, noOfPeople, tipPercentage]);
+
+  const peopleInput = React.createRef();
+
   return (
     <div>
       <h2 className='title'>
@@ -92,11 +93,20 @@ const App = () => {
             </div>
             <div className='column'>
               <h3>Number of People</h3>
+
               <input
                 type='text'
                 placeholder='0'
                 id='people-input'
-                onChange={(e) => setNoOfPeople(e.target.value)}
+                onChange={(e) => {
+                  if (e.target.value < 1) {
+                    e.target.style.outline = 'red 2px solid';
+                  } else if (e.target.value > 1) {
+                    e.target.style.outline = 'blue 2px solid';
+                  }
+                  setNoOfPeople(e.target.value);
+                }}
+                ref={peopleInput}
               />
 
               <i>

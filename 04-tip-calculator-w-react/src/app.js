@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const App = () => {
   // const [tip, setTip] = useState(0);
@@ -7,6 +7,8 @@ const App = () => {
   const [bill, setBill] = useState(0);
   const [noOfPeople, setNoOfPeople] = useState(0);
   const [tipPercentage, setTipPercentage] = useState(0.05);
+  // const billForm = useRef(null);
+  // const noOfPeopleForm = useRef(null);
 
   const calculate = () => {
     if (bill && noOfPeople && tipPercentage) {
@@ -22,19 +24,21 @@ const App = () => {
     }
   };
 
-  // Didn't work, will try again later.
+  // Traditional way. Haven't figured out an easier way to reset it yet.
   const setDefaults = () => {
-    console.log('Setting Defaults');
+    const allInputs = document.querySelectorAll('input');
+    allInputs.forEach((input) => {
+      input.value = '';
+    });
     setBill(0);
     setNoOfPeople(0);
     setTipPercentage(0.05);
+    setTipAmount('0.00');
+    setTotal('0.00');
   };
 
   useEffect(() => {
     calculate();
-    return () => {
-      console.log('cleanup');
-    };
   }, [bill, noOfPeople, tipPercentage]);
   return (
     <div>
@@ -77,7 +81,12 @@ const App = () => {
               <button className='btn btn-dark' value={50}>
                 50%
               </button>
-              <button className='btn btn-light custom'>Custom</button>
+              <input
+                type='text'
+                placeholder='Custom'
+                className='btn btn-light custom'
+                onChange={(e) => setTipPercentage(e.target.value / 100)}
+              />
             </div>
             <div className='column'>
               <h3>Number of People</h3>

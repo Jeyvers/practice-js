@@ -165,6 +165,10 @@ button:hover {
   font-weight: bold;
 }
 
+.custom::placeholder {
+  opacity: 1;
+}
+
 .input-with-item {
   display: flex;
   justify-content: space-between;

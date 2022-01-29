@@ -1,10 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700&display=swap');
+:root {
+  --dark-blue: hsl(233, 26%, 24%);
+  --lime-green: hsl(136, 65%, 51%);
+  --bright-cyan: hsl(192, 70%, 51%);
+  --grayish-blue: hsl(233, 8%, 62%);
+  --light-grayish-blue: hsl(220, 16%, 96%);
+  --white: hsl(0, 0%, 100%);
+  --default-gradient: linear-gradient(
+    to right,
+    var(--lime-green),
+    var(--bright-cyan)
+  );
+
+  /* Font weights */
+  --bold-weight: 300;
+  --bolder-weight: 400;
+  --boldest-weight: 700;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Public Sans', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 3rem;
+  width: 15ch;
+}
+
+button {
+  outline: none;
+  border: none;
 }
 
 .container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.request-btn {
+  padding: 15px 40px;
+  background: var(--default-gradient);
+  border-radius: 1.3rem;
+  color: var(--white);
+  font-weight: var(--bold-weight);
+  font-weight: 700;
+}
+
+/* Header */
+header {
+  position: absolute;
+  padding: 20px 0;
+  z-index: 100;
+  background: var(--white);
+  min-width: 100vw;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul li {
+  padding: 0 20px;
+}
+
+nav ul a {
+  color: var(--grayish-blue);
+}
+
+/* Top showcase */
+.top-showcase {
+  background-image: url(./images/bg-intro-desktop.svg);
+  background-position: 800px -170px;
+  background-repeat: no-repeat;
+  background-color: var(--light-grayish-blue);
+  height: 560px;
+}
+
+.top-showcase article {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 180px;
+}
+
+.top-showcase img {
+  margin-top: -50px;
+  margin-right: -250px;
+  width: 600px;
+}
+
+.top-showcase .info {
+  width: 70px;
+  width: 55ch;
+}
+
+.top-showcase .info h2 {
+  margin-bottom: 30px;
+}
+
+.top-showcase .info p {
+  margin-bottom: 30px;
+  line-height: 1.5rem;
+  color: var(--grayish-blue);
+  font-size: 1.3rem;
+}
+
+/* Showcase */
+.showcase article {
+  padding-top: 20px;
 }

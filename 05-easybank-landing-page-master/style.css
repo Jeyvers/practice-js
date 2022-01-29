@@ -42,6 +42,15 @@ h2 {
   width: 15ch;
 }
 
+h3 {
+  font-size: 2.3rem;
+  margin-bottom: 15px;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
 button {
   outline: none;
   border: none;
@@ -54,8 +63,15 @@ button {
 
 .cards {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .request-btn {
@@ -100,7 +116,6 @@ nav ul a {
   background-image: url(./images/bg-intro-desktop.svg);
   background-position: 800px -170px;
   background-repeat: no-repeat;
-  background-color: var(--light-grayish-blue);
   height: 560px;
 }
 
@@ -134,6 +149,53 @@ nav ul a {
 }
 
 /* Showcase */
+.showcase {
+  background-color: var(--light-grayish-blue);
+}
+
 .showcase article {
-  padding-top: 20px;
+  padding-top: 80px;
+  line-height: 1.5rem;
+}
+
+.showcase article p {
+  color: var(--grayish-blue);
+}
+
+/* Latest articles  */
+.latest-articles {
+  height: 700px;
+}
+
+.latest-articles .cards {
+  gap: 40px;
+}
+.card.latest-article {
+  background: var(--white);
+  max-width: 270px;
+  border-radius: 10px;
+}
+.card.latest-article img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.latest-article .card-info {
+  padding: 20px;
+}
+
+/* Footer */
+footer {
+  background: var(--dark-blue);
+}
+
+footer .container {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer .links {
+  display: flex;
+  justify-content: space-evenly;
 }

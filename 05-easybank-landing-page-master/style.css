@@ -190,12 +190,36 @@ footer {
 }
 
 footer .container {
-  padding: 20px 0;
+  padding: 50px 0;
   display: flex;
   justify-content: space-between;
 }
 
 footer .links {
+  width: 500px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+
+footer .footer-section,
+footer .footer-section ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+  gap: 15px;
+}
+
+footer .footer-section a {
+  color: white;
+}
+
+.footer-social-links img {
+  padding: 0 5px;
+}
+
+.footer-message blockquote {
+  margin-left: -60px;
+  margin-top: 30px;
+  color: var(--grayish-blue);
 }

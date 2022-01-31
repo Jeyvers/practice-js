@@ -83,6 +83,11 @@ button {
   font-weight: 700;
 }
 
+.request-btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 /* Header */
 header {
   position: absolute;
@@ -108,7 +113,16 @@ nav ul li {
 }
 
 nav ul a {
+  padding-bottom: 30px;
   color: var(--grayish-blue);
+}
+
+nav ul a:hover {
+  border-bottom: solid var(--bright-cyan) 3px;
+}
+
+.nav-hamburger {
+  display: none;
 }
 
 /* Top showcase */
@@ -180,6 +194,17 @@ nav ul a {
   border-radius: 10px 10px 0 0;
 }
 
+.card-info a {
+  font-size: 1.4rem;
+  font-weight: var(--bold-weight);
+  color: black;
+  padding: 20px 0;
+}
+
+.card-info a:hover {
+  color: var(--bright-cyan);
+}
+
 .latest-article .card-info {
   padding: 20px;
 }
@@ -214,12 +239,38 @@ footer .footer-section a {
   color: white;
 }
 
+.footer-section a:hover {
+  color: var(--bright-cyan);
+}
+
 .footer-social-links img {
   padding: 0 5px;
+}
+
+.footer-social-icons:hover {
+  filter: invert(0.4) sepia(1) saturate(20) hue-rotate(140.4deg) brightness(1);
 }
 
 .footer-message blockquote {
   margin-left: -60px;
   margin-top: 30px;
   color: var(--grayish-blue);
+}
+
+@media screen and (min-width: 375) {
+  nav ul {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: block;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .showcase .container article {
+    flex-direction: column;
+  }
 }

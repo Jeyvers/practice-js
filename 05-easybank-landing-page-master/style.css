@@ -76,6 +76,7 @@ button {
 
 .request-btn {
   padding: 15px 40px;
+
   background: var(--default-gradient);
   border-radius: 1.3rem;
   color: var(--white);
@@ -257,20 +258,40 @@ footer .footer-section a {
   color: var(--grayish-blue);
 }
 
-@media screen and (min-width: 375) {
-  nav ul {
-    display: none;
+@media screen and (max-width: 900px) {
+  body {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  header {
+    position: relative;
   }
 
   .nav-hamburger {
     display: block;
   }
 
-  .cards {
+  nav ul {
+    background: black;
+    position: absolute;
+    top: 5rem;
+    text-align: center;
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: auto;
+
+    /* display: none; */
   }
 
-  .showcase .container article {
-    flex-direction: column;
+  .request-btn:first-child {
+    display: none;
+  }
+
+  .top-showcase img {
+    display: none;
   }
 }

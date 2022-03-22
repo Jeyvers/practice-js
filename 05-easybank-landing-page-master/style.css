@@ -310,4 +310,8 @@ footer .footer-section a {
   .top-showcase .info {
     display: none;
   }
+
+  .cards {
+    flex-direction: column;
+  }
 }

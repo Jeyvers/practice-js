@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Country Detail</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="single-state" id="single-state"></div>
+    </div>
+
+    <script>
+      const singleStateDOM = document.getElementById('single-state');
+
+      const getState = () => {
+        let state = JSON.parse(localStorage.getItem('state'));
+        showSingleState(state);
+        return state;
+      };
+
+      const showSingleState = (state) => {
+        let result = '';
+
+        result += `
+          <div> ${state.name.official} </div>
+          `;
+        singleStateDOM.innerHTML = result;
+      };
+
+      getState();
+    </script>
+  </body>
+</html>

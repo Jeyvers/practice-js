@@ -4,7 +4,8 @@ const selectMenu = document.getElementById('select-menu');
 const menuOptionsBtn = document.querySelector('.menu-options-btn');
 const options = document.querySelector('.options');
 const showError = document.querySelector('.show-error');
-let allStates = '';
+let allStates;
+let statesDOM = [];
 
 class States {
   async getStates() {
@@ -12,7 +13,7 @@ class States {
       const response = await fetch('https://restcountries.com/v3.1/all');
       const data = await response.json();
       allStates = data;
-      console.log(data);
+
       return data;
     } catch (error) {
       showError.innerHTML = error;
@@ -41,7 +42,7 @@ class UI {
     data.forEach((state) => {
       const { name, region, population, capital, flags } = state;
       showState += `
-          <article class="state" data-id={id}>
+          <article class="state" data-name="${name.official}">
               <div class='state-flag'>
                 <img src=${flags.svg} alt="">             
                </div>
@@ -76,7 +77,6 @@ class UI {
     });
 
     document.addEventListener('click', (e) => {
-      console.log(e.target);
       if (e.target !== menuOptionsBtn && options.classList.contains('show')) {
         options.classList.remove('show');
       }
@@ -104,6 +104,40 @@ class UI {
     );
     this.showStates(filteredStates);
   };
+
+  getSingleState = () => {
+    console.log(window.location);
+    statesDOM = document.querySelectorAll('.state');
+    statesDOM.forEach((state) => {
+      state.addEventListener('click', () => {
+        let stateName = state.getAttribute('data-name');
+        let singleState = [
+          ...allStates.filter((state) => state.name.official === stateName),
+        ];
+        console.log(singleState);
+        Storage.getState(singleState);
+        // window.location.pathname = '/details.html';
+      });
+    });
+  };
+}
+
+class Storage {
+  static saveStates(states) {
+    localStorage.setItem('states', JSON.stringify(states));
+  }
+
+  static getState(stateObj) {
+    let states = JSON.parse(localStorage.getItem('states'));
+    let singleState = states.find(
+      (state) => state.name.official === stateObj[0].name.official
+    );
+    this.setState(singleState);
+  }
+
+  static setState(state) {
+    localStorage.setItem('state', JSON.stringify(state));
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -115,9 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
       allStates = states;
       ui.showStates(allStates);
       ui.addMenuButtons(allStates);
+      Storage.saveStates(allStates);
     })
     .then(() => {
       ui.runSearchStates();
+      ui.getSingleState();
     });
 });
-// searchInput.addEventListener('input', UI.searchStates(searchInput.value));

@@ -34,19 +34,13 @@
             <ion-icon name="search-outline"></ion-icon>
           </span>
         </form>
-        <div class="options">
-          <button type="menu">Filter by Region</button>
-          <menu id="select-menu"> </menu>
-          <!-- <select name="" id="select-options" class="select-options">
-            <option value="Filter by region" disabled>Filter by Region</option>
-            <option value="Africa">Africa</option>
-            <option value="Americas">America</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="Oceania">Oceania</option>
-            >
-          </select> -->
-        </div>
+        <button type="menu" class="menu-options-btn">
+          Filter by Region
+          <i class="fa fa-angle-down"></i>
+        </button>
+      </div>
+      <div class="options">
+        <menu id="select-menu" class="menu-options"> </menu>
       </div>
       <main class="container states-container">
         <div class="states-list" id="states-list"></div>

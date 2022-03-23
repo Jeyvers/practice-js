@@ -44,9 +44,23 @@ img {
   height: 100%;
 }
 
+ul {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
 .container {
+  position: relative;
   margin: auto;
   width: 90vw;
+}
+
+.show-error {
+  width: 90vw;
+  margin: 1rem auto;
 }
 
 header {
@@ -101,19 +115,60 @@ form input:focus {
   font-weight: lighter;
 }
 
-.options {
+/* .options {
   border-radius: 0.5rem;
-  /* margin-top: 1rem; */
+   margin-top: 1rem; 
   padding: 1rem;
   width: fit-content;
   background: var(--dark-blue);
+} */
+
+/* .options > * {
+  background: var(--dark-blue);
+  border-radius: 0.5rem;
+  color: var(--white);
+  padding: 1.1rem 2rem;
+} */
+
+.menu-options-btn {
+  border-radius: 0.5rem;
+  background: var(--dark-blue);
+  padding: 1.1rem 2rem;
+  color: var(--white);
+  border: none;
+  width: 14rem;
 }
 
-.select-options {
-  padding: 0.2rem 1rem;
+.fa-angle-down {
+  margin-left: 3rem;
+}
+
+.options {
+  display: none;
+}
+
+.options.show {
+  display: block;
+}
+
+.menu-options {
+  border-radius: 0.5rem;
+  width: 14rem;
   background: var(--dark-blue);
-  border: none;
-  color: var(--white);
+  position: absolute;
+  top: 185px;
+  z-index: 100;
+  padding: 1rem 1.5rem;
+}
+
+.menu-options li {
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.menu-options li:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 .states-list {
@@ -126,11 +181,11 @@ form input:focus {
 }
 
 .state {
-  /* padding: 4rem; */
   max-width: 450px;
   margin: 0 3rem;
   border-radius: 0.5rem;
   background: var(--dark-blue);
+  cursor: pointer;
 }
 
 .state-flag img {
@@ -164,7 +219,6 @@ form input:focus {
 
 @media screen and (min-width: 750px) {
   .form-container {
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -172,5 +226,10 @@ form input:focus {
 
   form input {
     padding-right: 12rem;
+  }
+
+  .menu-options {
+    right: 0;
+    top: 95px;
   }
 }

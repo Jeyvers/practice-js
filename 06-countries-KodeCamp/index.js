@@ -1,6 +1,8 @@
 const statesList = document.getElementById('states-list');
 const searchInput = document.getElementById('search-input');
 const selectMenu = document.getElementById('select-menu');
+const menuOptionsBtn = document.querySelector('.menu-options-btn');
+const options = document.querySelector('.options');
 const showError = document.querySelector('.show-error');
 let allStates = '';
 
@@ -68,6 +70,17 @@ class UI {
     searchInput.addEventListener('input', () =>
       this.searchStates(searchInput.value)
     );
+
+    menuOptionsBtn.addEventListener('click', () => {
+      options.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      console.log(e.target);
+      if (e.target !== menuOptionsBtn && options.classList.contains('show')) {
+        options.classList.remove('show');
+      }
+    });
   };
 
   searchStates = (searchText) => {

@@ -14,10 +14,53 @@
   <body>
     <header>
       <h1>Where in the world?</h1>
-      <i class="fa-solid fa-moon"></i>
-      <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+
+      <p>
+        <span>
+          <ion-icon name="moon-sharp"></ion-icon>
+        </span>
+        Dark Mode
+      </p>
     </header>
-    <main class="container countries-container" id="countries-container"></main>
+    <div class="container">
+      <div class="form-container">
+        <form>
+          <input
+            type="text"
+            placeholder="Search for a country..."
+            id="search-input"
+          />
+          <span class="search-icon">
+            <ion-icon name="search-outline"></ion-icon>
+          </span>
+        </form>
+        <div class="options">
+          <button type="menu">Filter by Region</button>
+          <menu id="select-menu"> </menu>
+          <!-- <select name="" id="select-options" class="select-options">
+            <option value="Filter by region" disabled>Filter by Region</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+            >
+          </select> -->
+        </div>
+      </div>
+      <main class="container states-container">
+        <div class="states-list" id="states-list"></div>
+      </main>
+    </div>
+    <div class="show-error"></div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
     <script src="index.js"></script>
   </body>
 </html>

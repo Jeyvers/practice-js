@@ -2,6 +2,7 @@ import { UI } from './index.js';
 
 const singleStateDOM = document.getElementById('single-state');
 let boardingStates = [];
+let buttons = [];
 const ui = new UI();
 
 const getBorder = (borders) => {
@@ -14,9 +15,15 @@ const getBorder = (borders) => {
   }
 };
 
-// const borderButtonsEvent = () => {
-//     c
-// }
+const borderButtonsEvent = () => {
+  //   console.log(name);
+  buttons = document.querySelectorAll('#borderButtons');
+  buttons.forEach((button) => {
+    button.addEventListener('click', (e) =>
+      ui.getSingleState(e.target.textContent)
+    );
+  });
+};
 
 const getStoredState = () => {
   let state = JSON.parse(localStorage.getItem('state'));
@@ -45,7 +52,7 @@ const showSingleState = (state) => {
 
   let borderButton = '';
   boardingStates.forEach((bord) => {
-    borderButton += `<button id="borderButtons">${bord.name.common}</button>`;
+    borderButton += `<button id="borderButtons" value=${bord.name.official}>${bord.name.common}</button>`;
   });
 
   for (let i in currencies) {
@@ -112,8 +119,7 @@ const showSingleState = (state) => {
           `;
 
   singleStateDOM.innerHTML = result;
-
-  //   currencies[0].name, currencies[1], currencies[2];
+  borderButtonsEvent();
 };
 
 getStoredState();

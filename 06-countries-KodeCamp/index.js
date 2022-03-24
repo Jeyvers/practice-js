@@ -4,6 +4,7 @@ const selectMenu = document.getElementById('select-menu');
 const menuOptionsBtn = document.querySelector('.menu-options-btn');
 const options = document.querySelector('.options');
 const showError = document.querySelector('.show-error');
+const moon = document.getElementById('moon');
 let allStates;
 let statesDOM = [];
 
@@ -80,6 +81,16 @@ export class UI {
       if (e.target !== menuOptionsBtn && options.classList.contains('show')) {
         options.classList.remove('show');
       }
+
+      if (e.target === moon) {
+        if (!document.body.classList.contains('light')) {
+          document.body.classList.add('light');
+        } else {
+          document.body.classList.remove('light');
+        }
+      }
+
+      this.getStatesDOM();
     });
   };
 
@@ -118,14 +129,13 @@ export class UI {
   getSingleState = (stateName) => {
     let states = JSON.parse(localStorage.getItem('states'));
     let singleState = [
-      ...states.filter((state) => state.name.official === stateName),
+      ...states.filter(
+        (state) =>
+          state.name.official === stateName || state.name.common === stateName
+      ),
     ];
     console.log(singleState);
     Storage.getState(singleState);
-  };
-
-  trial = () => {
-    console.log('it is working');
   };
 }
 

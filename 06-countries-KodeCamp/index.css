@@ -22,7 +22,7 @@
   --dark-gray: hsl(0, 0%, 52%);
   --very-light-gray: hsl(0, 0%, 98%);
   --white: hsl(0, 0%, 100%);
-  --box-shadow: 0 2px 0 1px black;
+  --box-shadow: 0 0 2px 0.2px rgba(71, 71, 71, 0.3);
 }
 
 * {
@@ -33,11 +33,24 @@
   line-height: 1.5;
 }
 
+body.light {
+  --dark-blue: hsl(0, 0%, 100%);
+  --very-dark-blue: hsl(0, 0%, 98%);
+  --very-dark-blue-text: hsl(200, 15%, 8%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --very-light-gray: hsl(0, 0%, 98%);
+  --white: hsl(200, 15%, 8%);
+}
+
 body {
   font-size: var(--normal-font-size);
   background: var(--very-dark-blue);
   color: var(--white);
   font-weight: var(--semi-bold-font-weight);
+}
+
+button {
+  cursor: pointer;
 }
 
 img {
@@ -72,11 +85,17 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
+  box-shadow: var(--box-shadow);
 }
 
 header p {
   font-size: var(--normal-font-size);
   font-weight: var(--semi-bold-font-weight);
+  cursor: pointer;
+}
+
+header p:hover {
+  opacity: 0.7;
 }
 
 header p span {
@@ -94,6 +113,7 @@ form {
 }
 
 form input {
+  box-shadow: var(--box-shadow);
   background: var(--dark-blue);
   color: var(--white);
   border: none;
@@ -118,6 +138,7 @@ form input:focus {
 }
 
 .menu-options-btn {
+  box-shadow: var(--box-shadow);
   border-radius: 0.5rem;
   background: var(--dark-blue);
   padding: 1.1rem 2rem;
@@ -139,6 +160,7 @@ form input:focus {
 }
 
 .menu-options {
+  box-shadow: var(--box-shadow);
   border-radius: 0.5rem;
   width: 14rem;
   background: var(--dark-blue);
@@ -173,6 +195,7 @@ form input:focus {
   border-radius: 0.5rem;
   background: var(--dark-blue);
   cursor: pointer;
+  box-shadow: var(--box-shadow);
 }
 
 .state-flag img {

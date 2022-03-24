@@ -13,7 +13,7 @@ class States {
       const response = await fetch('https://restcountries.com/v3.1/all');
       const data = await response.json();
       allStates = data;
-
+      console.log(allStates);
       return data;
     } catch (error) {
       showError.innerHTML = error;
@@ -22,7 +22,7 @@ class States {
   }
 }
 
-class UI {
+export class UI {
   addMenuButtons = (data) => {
     let li;
     let regionList = data.map((state) => state.region);
@@ -105,20 +105,27 @@ class UI {
     this.showStates(filteredStates);
   };
 
-  getSingleState = () => {
-    console.log(window.location);
+  getStatesDOM = () => {
     statesDOM = document.querySelectorAll('.state');
     statesDOM.forEach((state) => {
       state.addEventListener('click', () => {
         let stateName = state.getAttribute('data-name');
-        let singleState = [
-          ...allStates.filter((state) => state.name.official === stateName),
-        ];
-        console.log(singleState);
-        Storage.getState(singleState);
-        // window.location.pathname = '/details.html';
+        this.getSingleState(stateName);
       });
     });
+  };
+
+  getSingleState = (stateName) => {
+    let states = JSON.parse(localStorage.getItem('states'));
+    let singleState = [
+      ...states.filter((state) => state.name.official === stateName),
+    ];
+    console.log(singleState);
+    Storage.getState(singleState);
+  };
+
+  trial = () => {
+    console.log('it is working');
   };
 }
 
@@ -128,6 +135,7 @@ class Storage {
   }
 
   static getState(stateObj) {
+    console.log(stateObj);
     let states = JSON.parse(localStorage.getItem('states'));
     let singleState = states.find(
       (state) => state.name.official === stateObj[0].name.official
@@ -137,6 +145,7 @@ class Storage {
 
   static setState(state) {
     localStorage.setItem('state', JSON.stringify(state));
+    window.location.pathname = '/details.html';
   }
 }
 
@@ -153,6 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(() => {
       ui.runSearchStates();
-      ui.getSingleState();
+      ui.getStatesDOM();
     });
 });

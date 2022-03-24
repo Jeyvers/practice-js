@@ -22,6 +22,7 @@
   --dark-gray: hsl(0, 0%, 52%);
   --very-light-gray: hsl(0, 0%, 98%);
   --white: hsl(0, 0%, 100%);
+  --box-shadow: 0 2px 0 1px black;
 }
 
 * {
@@ -44,8 +45,9 @@ img {
   height: 100%;
 }
 
-ul {
+a {
   text-decoration: none;
+  color: var(--white);
 }
 
 li {
@@ -114,21 +116,6 @@ form input:focus {
   bottom: 39px;
   font-weight: lighter;
 }
-
-/* .options {
-  border-radius: 0.5rem;
-   margin-top: 1rem; 
-  padding: 1rem;
-  width: fit-content;
-  background: var(--dark-blue);
-} */
-
-/* .options > * {
-  background: var(--dark-blue);
-  border-radius: 0.5rem;
-  color: var(--white);
-  padding: 1.1rem 2rem;
-} */
 
 .menu-options-btn {
   border-radius: 0.5rem;
@@ -211,9 +198,90 @@ form input:focus {
   font-weight: var(--regular-font-weight);
 }
 
+/* Details Page */
+.back-btn-container {
+  padding: 0.75rem 0;
+  border-radius: 0.5rem;
+  max-width: fit-content;
+  margin: 2rem 1rem;
+  background: var(--dark-blue);
+  box-shadow: var(--box-shadow);
+}
+
+.back-btn {
+  padding: 2rem;
+}
+
+.back-btn:hover {
+  opacity: 0.7;
+}
+
+.single-state {
+  margin: auto 1rem;
+  margin-bottom: 4rem;
+}
+
+.single-state article {
+  display: grid;
+}
+
+.single-state-flag img {
+  max-width: 450px;
+}
+
+.single-state-information {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.single-state-information h1 {
+  margin-top: 2rem;
+}
+
+.single-state-details {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.single-state-details p {
+  font-weight: var(--semi-bold-font-weight);
+}
+
+.single-state-details span {
+  font-weight: var(--regular-font-weight);
+}
+
+.single-state-borders {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.single-state-borders button {
+  max-width: max-content;
+  padding: 0.5rem 1.7rem;
+  margin: 0.5rem;
+  background: var(--dark-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.single-state-borders button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(0.98);
+}
+
 @media screen and (min-width: 596px) {
   .state {
     margin: 0 0.5rem;
+  }
+
+  .single-state-details {
+    flex-direction: row;
   }
 }
 
@@ -231,5 +299,22 @@ form input:focus {
   .menu-options {
     right: 0;
     top: 95px;
+  }
+
+  .single-state article {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .single-state-information h1 {
+    margin: 0;
+  }
+
+  .single-state-border-btns {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
   }
 }

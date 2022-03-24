@@ -8,29 +8,34 @@
     <title>Country Detail</title>
   </head>
   <body>
+    <body>
+    <header>
+      <h1>Where in the world?</h1>
+
+      <p>
+        <span>
+          <ion-icon name="moon-sharp"></ion-icon>
+        </span>
+        Dark Mode
+      </p>
+    </header>
     <div class="container">
+      <div class="back-btn-container" >
+        <a href="./index.html" class="back-btn">
+          <ion-icon name="arrow-back-outline"></ion-icon> Back 
+        </a>
+       
+      </div>
       <div class="single-state" id="single-state"></div>
     </div>
-
-    <script>
-      const singleStateDOM = document.getElementById('single-state');
-
-      const getState = () => {
-        let state = JSON.parse(localStorage.getItem('state'));
-        showSingleState(state);
-        return state;
-      };
-
-      const showSingleState = (state) => {
-        let result = '';
-
-        result += `
-          <div> ${state.name.official} </div>
-          `;
-        singleStateDOM.innerHTML = result;
-      };
-
-      getState();
-    </script>
+ <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="details.js" type="module"></script>
   </body>
 </html>

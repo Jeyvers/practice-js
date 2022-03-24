@@ -50,6 +50,9 @@ body {
 }
 
 button {
+  background: none;
+  outline: none;
+  border: none;
   cursor: pointer;
 }
 
@@ -88,18 +91,16 @@ header {
   box-shadow: var(--box-shadow);
 }
 
-header p {
+header button {
+  color: var(--white);
   font-size: var(--normal-font-size);
   font-weight: var(--semi-bold-font-weight);
   cursor: pointer;
+  padding: 0.5rem 1rem;
 }
 
-header p:hover {
+header button:hover {
   opacity: 0.7;
-}
-
-header p span {
-  padding: 0 0.5rem;
 }
 
 .form-container {

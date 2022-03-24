@@ -1,6 +1,8 @@
 import { UI } from './index.js';
 
 const singleStateDOM = document.getElementById('single-state');
+const moon = document.getElementById('moon');
+let allStates;
 let boardingStates = [];
 let buttons = [];
 const ui = new UI();
@@ -121,5 +123,19 @@ const showSingleState = (state) => {
   singleStateDOM.innerHTML = result;
   borderButtonsEvent();
 };
+
+moon.addEventListener('click', () => {
+  if (!document.body.classList.contains('light')) {
+    moon.innerHTML = `  
+         </ion-icon>
+        <ion-icon name="moon-outline"></ion-icon>
+        Dark Mode`;
+    document.body.classList.add('light');
+  } else {
+    moon.innerHTML = `<ion-icon name="moon-sharp"></ion-icon>
+        Dark Mode`;
+    document.body.classList.remove('light');
+  }
+});
 
 getStoredState();

@@ -84,8 +84,14 @@ export class UI {
 
       if (e.target === moon) {
         if (!document.body.classList.contains('light')) {
+          moon.innerHTML = `  
+         </ion-icon>
+        <ion-icon name="moon-outline"></ion-icon>
+        Dark Mode`;
           document.body.classList.add('light');
         } else {
+          moon.innerHTML = `<ion-icon name="moon-sharp"></ion-icon>
+        Dark Mode`;
           document.body.classList.remove('light');
         }
       }

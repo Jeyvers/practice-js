@@ -9,6 +9,7 @@ let allStates;
 let statesDOM = [];
 
 class States {
+  // Fetch states from api
   async getStates() {
     try {
       const response = await fetch('https://restcountries.com/v3.1/all');
@@ -24,6 +25,7 @@ class States {
 }
 
 export class UI {
+  // Map through regions in fhd api and create a button for each one
   addMenuButtons = (data) => {
     let li;
     let regionList = data.map((state) => state.region);
@@ -38,6 +40,7 @@ export class UI {
     });
   };
 
+  
   showStates = (data) => {
     let showState = '';
     data.forEach((state) => {
@@ -122,6 +125,7 @@ export class UI {
     this.showStates(filteredStates);
   };
 
+// Get all state elements in the dom
   getStatesDOM = () => {
     statesDOM = document.querySelectorAll('.state');
     statesDOM.forEach((state) => {

@@ -4,7 +4,9 @@ const selectMenu = document.getElementById('select-menu');
 const menuOptionsBtn = document.querySelector('.menu-options-btn');
 const options = document.querySelector('.options');
 const showError = document.querySelector('.show-error');
+const showLoading = document.getElementById('show-loading');
 const moon = document.getElementById('moon');
+let loading = true;
 let allStates;
 let statesDOM = [];
 
@@ -12,10 +14,13 @@ class States {
   // Fetch states from api
   async getStates() {
     try {
+      if (loading) {
+        showLoading.classList.add('show-loading');
+        console.log('loading');
+      }
       const response = await fetch('https://restcountries.com/v3.1/all');
       const data = await response.json();
       allStates = data;
-      console.log(allStates);
       return data;
     } catch (error) {
       showError.innerHTML = error;
@@ -166,7 +171,7 @@ class Storage {
 
   static setState(state) {
     localStorage.setItem('state', JSON.stringify(state));
-    window.location.pathname = './Details/details.html';
+    window.location.pathname = './CountryDetail/details.html';
   }
 }
 
@@ -176,6 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
   states
     .getStates()
     .then((states) => {
+      loading = false;
+      console.log('not loading');
+      showLoading.classList.remove('show-loading');
       allStates = states;
       ui.showStates(allStates);
       ui.addMenuButtons(allStates);

@@ -181,6 +181,44 @@ form input:focus {
   opacity: 0.6;
 }
 
+/* Loading Section */
+.loading {
+  display: none;
+}
+/* 
+.semi-loader {
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+} */
+
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+}
+
+.bouncing-loader > span {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 3rem 0.2rem;
+  background-color: var(--dark-blue);
+  border-radius: 50%;
+  animation: bouncing-loader 0.6s infinite alternate;
+  animation-delay: calc(0.3s * var(--order));
+}
+
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translate3d(0, -16px, 0);
+  }
+}
+
+.show-loading {
+  display: block;
+}
+
+/* States Section */
 .states-list {
   width: 90vw;
   margin: 2rem auto;

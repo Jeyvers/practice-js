@@ -77,6 +77,8 @@ export class UI {
       options.classList.toggle('show');
     });
 
+    document.addEventListener('submit', (e) => e.preventDefault());
+
     document.addEventListener('click', (e) => {
       if (e.target !== menuOptionsBtn && options.classList.contains('show')) {
         options.classList.remove('show');

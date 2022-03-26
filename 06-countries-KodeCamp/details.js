@@ -49,17 +49,25 @@ const showSingleState = (state) => {
     tld,
     borders,
   } = state;
+  const keys = Object.keys(currencies);
+  const values = Object.values(currencies);
+  // console.log(keys, values);
 
+  for (let i = 0; i < keys.length; i++) {
+    // // Grab the key
+    // console.log(`Details for ${keys[i]} Currency`);
+    // // Grab name value
+    // console.log('name:', values[i].name);
+    // // Grab symbol value
+    // console.log('symbol:', values[i].symbol);
+    currency = values[i].name;
+  }
   getBorder(borders);
 
   let borderButton = '';
   boardingStates.forEach((bord) => {
     borderButton += `<button id="borderButtons" value=${bord.name.official}>${bord.name.common}</button>`;
   });
-
-  for (let i in currencies) {
-    currency = i;
-  }
 
   language = Object.values(languages);
 

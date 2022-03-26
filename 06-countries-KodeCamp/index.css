@@ -185,11 +185,6 @@ form input:focus {
 .loading {
   display: none;
 }
-/* 
-.semi-loader {
-  margin-top: 10rem;
-  margin-bottom: 5rem;
-} */
 
 .bouncing-loader {
   display: flex;

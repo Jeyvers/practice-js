@@ -63,7 +63,7 @@ const showSingleState = (state) => {
     currency = values[i].name;
   }
   getBorder(borders);
-
+  console.log(window.history);
   let borderButton = '';
   boardingStates.forEach((bord) => {
     borderButton += `<button id="borderButtons" value=${bord.name.official}>${bord.name.common}</button>`;

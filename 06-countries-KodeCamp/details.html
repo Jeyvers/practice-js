@@ -19,10 +19,13 @@
     </header>
     <div class="container">
       <div class="back-btn-container" >
-        <a href="./index.html" class="back-btn">
+        <a href="./index.html" class="back-btn" onclick="history.back()">
           <ion-icon name="arrow-back-outline"></ion-icon> Back 
-        </a>
-       
+        </a> 
+        
+        <!-- Use history.back() in react application -->
+        <!-- <button onclick="history.back()">Back</button> -->
+
       </div>
       <div class="single-state" id="single-state"></div>
     </div>

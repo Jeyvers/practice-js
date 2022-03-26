@@ -40,7 +40,6 @@ export class UI {
     });
   };
 
-  
   showStates = (data) => {
     let showState = '';
     data.forEach((state) => {
@@ -127,7 +126,7 @@ export class UI {
     this.showStates(filteredStates);
   };
 
-// Get all state elements in the dom
+  // Get all state elements in the dom
   getStatesDOM = () => {
     statesDOM = document.querySelectorAll('.state');
     statesDOM.forEach((state) => {
@@ -167,7 +166,7 @@ class Storage {
 
   static setState(state) {
     localStorage.setItem('state', JSON.stringify(state));
-    window.location.pathname = '/details.html';
+    window.location.pathname = './Details/details.html';
   }
 }
 

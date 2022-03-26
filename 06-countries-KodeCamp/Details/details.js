@@ -1,4 +1,4 @@
-import { UI } from './index.js';
+import { UI } from '../index.js';
 
 const singleStateDOM = document.getElementById('single-state');
 const moon = document.getElementById('moon');

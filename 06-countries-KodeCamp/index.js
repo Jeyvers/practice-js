@@ -16,7 +16,6 @@ class States {
     try {
       if (loading) {
         showLoading.classList.add('show-loading');
-        console.log('loading');
       }
       const response = await fetch('https://restcountries.com/v3.1/all');
       const data = await response.json();
@@ -24,6 +23,8 @@ class States {
       return data;
     } catch (error) {
       showError.innerHTML = error;
+      showLoading.classList.remove('show-loading');
+      loading = false;
       throw new Error(error);
     }
   }
@@ -182,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .getStates()
     .then((states) => {
       loading = false;
-      console.log('not loading');
       showLoading.classList.remove('show-loading');
       allStates = states;
       ui.showStates(allStates);

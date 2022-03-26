@@ -79,6 +79,8 @@ li {
 .show-error {
   width: 90vw;
   margin: 1rem auto;
+  display: grid;
+  justify-content: center;
 }
 
 header {

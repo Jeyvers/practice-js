@@ -85,7 +85,10 @@ export class UI {
       options.classList.toggle('show');
     });
 
-    document.addEventListener('submit', (e) => e.preventDefault());
+    document.addEventListener('submit', (e) => {
+      searchInput.value = '';
+      e.preventDefault();
+    });
 
     document.addEventListener('click', (e) => {
       if (e.target !== menuOptionsBtn && options.classList.contains('show')) {
@@ -123,6 +126,7 @@ export class UI {
   };
 
   filterStates = (filterValue) => {
+    // menuOptionsBtn.textContent = filterValue;
     if (filterValue == 'Filter by Region') {
       return;
     }

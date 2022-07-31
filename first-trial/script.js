@@ -1,43 +1,28 @@
-const formatArg = (arg) => {
-  if (Array.isArray(arg)) {
-    // Print a bulleted list
-    return arg.map((part) => `- ${part}`).join('\n');
-  }
-  if (arg.toString === Object.prototype.toString) {
-    // This object will be serialized to "[object Object]".
-    // Let's print something nicer.
-    return JSON.stringify(arg);
-  }
-  return arg;
-};
+// Create a new worker, giving it the code in "generate.js"
+const worker = new Worker('./generate.js');
 
-const print = (segments, ...args) => {
-  // For any well-formed template literal, there will always be N args and
-  // (N+1) string segments.
-  let message = segments[0];
-  segments.slice(1).forEach((segment, index) => {
-    message += formatArg(args[index]) + segment;
+// When the user clicks "Generate primes", send a message to the worker.
+// The message command is "generate", and the message also contains "quota",
+// which is the number of primes to generate.
+document.querySelector('#generate').addEventListener('click', () => {
+  const quota = document.querySelector('#quota').value;
+  worker.postMessage({
+    command: 'generate',
+    quota: quota,
   });
-  console.log(message);
-};
+});
 
-const todos = [
-  'Learn JavaScript',
-  'Learn Web APIs',
-  'Set up my website',
-  'Profit!',
-];
+// When the worker sends a message back to the main thread,
+// update the output box with a message for the user, including the number of
+// primes that were generated, taken from the message data.
+worker.addEventListener('message', (message) => {
+  document.querySelector(
+    '#output'
+  ).textContent = `Finished generating ${message.data} primes!`;
+});
 
-const progress = { javascript: 20, html: 50, css: 10 };
-
-print`I need to do:
-${todos}
-My current progress is: ${progress}
-`;
-
-// I need to do:
-// - Learn JavaScript
-// - Learn Web APIs
-// - Set up my website
-// - Profit!
-// My current progress is: {"javascript":20,"html":50,"css":10}
+document.querySelector('#reload').addEventListener('click', () => {
+  document.querySelector('#user-input').value =
+    'Try typing in here immediately after pressing "Generate primes"';
+  document.location.reload();
+});

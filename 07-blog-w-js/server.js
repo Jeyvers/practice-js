@@ -21,7 +21,7 @@ app.post('/upload', (req, res) => {
   let date = new Date();
   //image name for uniqueness
   let imageName = date.getDate() + date.getTime() + file.name;
-  // iamge upload path
+  // image upload path
   let path = 'public/uploads/' + imageName;
 
   // create upload
